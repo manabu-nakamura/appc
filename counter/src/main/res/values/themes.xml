@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:backgroundDimAmount">0.32</item>
+    </style>
+</resources>
