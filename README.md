@@ -11,8 +11,8 @@
       - add documentation
       - add new apps
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
-  - [App](https://github.com/manabu-nakamura/app) :red_square:
-  - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) :red_square:
+  - [App](https://github.com/manabu-nakamura/app) 🟥
+  - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) 🟥
     - https://github.com/manabu-nakamura/manabu-nakamura
 
 <img src="docs/s1.png" width="20%">
