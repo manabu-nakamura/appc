@@ -10,9 +10,11 @@
       - add comments
       - add documentation
       - add new apps
+  - [Contributions](https://github.com/android/compose-samples/issues?q=author%3Amanabu-nakamura) 🟥
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
   - [App](https://github.com/manabu-nakamura/app) 🟥
   - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) 🟥
-    - https://github.com/manabu-nakamura/manabu-nakamura
 
 <img src="docs/s1.png" width="20%">
+
+https://github.com/manabu-nakamura
