@@ -18,4 +18,4 @@
 
 <img src="docs/s1.png" width="20%">
 
-https://github.com/manabu-nakamura
+[Manabu Nakamura](https://github.com/manabu-nakamura)
