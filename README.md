@@ -9,6 +9,7 @@
     - Plan
       - add comments
       - add documentation
+        - [memo](https://github.com/manabu-nakamura/appc/wiki/memo)
       - add new apps
   - [Contributions](https://github.com/android/compose-samples/issues?q=author%3Amanabu-nakamura) 🟥
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
