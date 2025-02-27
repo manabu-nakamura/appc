@@ -16,6 +16,6 @@
   - [App](https://github.com/manabu-nakamura/app) 🟥
   - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) 🟥
 
-<img src="docs/s1.png" width="20%">
+<img src="docs/s1.png" width="150">
 
 [Manabu Nakamura](https://github.com/manabu-nakamura)
