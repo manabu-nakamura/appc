@@ -6,7 +6,7 @@
 </style>
 ```
 <img src="s3.png" width="150">-><img src="s2.png" width="150">\
-x->`<item name="android:backgroundDimAmount">0.32</item>`\
+(0) -> (1) `<item name="android:backgroundDimAmount">0.32</item>`\
 https://github.com/material-components/material-components-android/issues/3635
 
 [Manabu Nakamura](https://github.com/manabu-nakamura)
