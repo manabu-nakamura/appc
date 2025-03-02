@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CounterTheme(darkTheme) {
                 Surface(Modifier.fillMaxSize()) {
-                    Column (
+                    Column(
                         Modifier
                             .safeDrawingPadding()
                             .padding(horizontal = 5.dp),
