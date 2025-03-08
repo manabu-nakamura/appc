@@ -1,7 +1,7 @@
 App ([Jetpack Compose](https://developer.android.com/compose))
 - [Jetpack Compose](https://developer.android.com/compose)
   - [Contributions](https://github.com/android/compose-samples/issues?q=author%3Amanabu-nakamura) 🟥
-  - App
+  - App and [Memo](docs/memo.md) 🟥
     - [counter](counter)
       - https://m3.material.io/
       - https://developer.android.com/develop/ui/compose/designsystems/material3
@@ -11,7 +11,6 @@ App ([Jetpack Compose](https://developer.android.com/compose))
     - Plan
       - add comments
       - add documentation
-        - [memo](docs/memo.md)
       - add new apps
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
   - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) 🟥
