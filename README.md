@@ -14,7 +14,7 @@ App ([Jetpack Compose](https://developer.android.com/compose))
       - add new apps
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
   - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) 🟥
-  - [App](https://github.com/manabu-nakamura/app) 🟥
+  - [App](https://github.com/manabu-nakamura/app) and [Memo](https://github.com/manabu-nakamura/app/blob/master/docs/memo.md) 🟥
 
 <img src="docs/s1.png" width="150">
 
