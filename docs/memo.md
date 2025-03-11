@@ -1,4 +1,4 @@
-🟥https://github.com/manabu-nakamura/appc/blob/master/counter/src/main/res/values/themes.xml:
+🟥https://github.com/manabu-nakamura/appc/blob/main/counter/src/main/res/values/themes.xml:
 - `android:backgroundDimAmount`
 ```xml
 <style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar">
