@@ -171,7 +171,7 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         Icon(
                                             painterResource(R.drawable.outline_light_mode_24),
-                                            stringResource(R.string.light)
+                                            null
                                         )
                                     }
                                 }
@@ -194,7 +194,7 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         Icon(
                                             painterResource(R.drawable.outline_dark_mode_24),
-                                            stringResource(R.string.dark)
+                                            null
                                         )
                                     }
                                 }
@@ -217,7 +217,7 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         Icon(
                                             painterResource(R.drawable.outline_android_24),
-                                            stringResource(R.string.system)
+                                            null
                                         )
                                     }
                                 }
@@ -238,7 +238,7 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     Icon(
                                         Icons.Outlined.Info,
-                                        stringResource(R.string.about)
+                                        null
                                     )
                                 }
                             }
