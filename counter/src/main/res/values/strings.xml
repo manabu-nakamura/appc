@@ -7,7 +7,7 @@
     <string name="system">Default</string>
     <string name="about">About</string>
     <!--<string name="copyright">© 2025 Manabu Nakamura</string>-->
-    <string name="copyright1">© 2025</string>
+    <string name="copyright1">© 2025\ </string>
     <string name="copyright2">https://github.com/manabu-nakamura</string>
     <string name="copyright3">Manabu Nakamura</string>
     <string name="ok">OK</string>

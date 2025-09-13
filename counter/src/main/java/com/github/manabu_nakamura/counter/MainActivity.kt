@@ -128,7 +128,6 @@ class MainActivity : ComponentActivity() {
                                     Text(
                                         buildAnnotatedString {
                                             append(stringResource(R.string.copyright1))
-                                            append(" ")
                                             withLink(
                                                 LinkAnnotation.Url(
                                                     stringResource(R.string.copyright2),
