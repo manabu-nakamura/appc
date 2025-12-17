@@ -15,8 +15,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -236,7 +234,7 @@ class MainActivity : ComponentActivity() {
                                     }
                                 ) {
                                     Icon(
-                                        Icons.Outlined.Info,
+                                        painterResource(R.drawable.outline_info_24),
                                         null
                                     )
                                 }
