@@ -13,7 +13,8 @@ App ([Jetpack Compose](https://developer.android.com/compose))
       - add documentation
       - add new apps
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
-  - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) 🟥
+  - [Contributions](https://github.com/material-components/material-components-android/issues?q=author%3Amanabu-nakamura) ([PRs are not directly merged into the repository](https://github.com/material-components/material-components-android/blob/master/docs/contributing.md#pull-request-process)) 🟥
+    - [Commits](https://github.com/material-components/material-components-android/commits?author=manabu-nakamura) 🟥
   - [App](https://github.com/manabu-nakamura/app) and [Memo](https://github.com/manabu-nakamura/app/blob/main/docs/memo.md) 🟥
 
 <img src="docs/s1.png" width="150">
