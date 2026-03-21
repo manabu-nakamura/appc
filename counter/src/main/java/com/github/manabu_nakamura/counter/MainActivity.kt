@@ -28,6 +28,7 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.rememberTooltipState
@@ -150,7 +151,7 @@ class MainActivity : ComponentActivity() {
                             }
                             SingleChoiceSegmentedButtonRow {
                                 TooltipBox(
-                                    TooltipDefaults.rememberPlainTooltipPositionProvider(),
+                                    TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
                                     {
                                         PlainTooltip {
                                             Text(stringResource(R.string.light))
@@ -173,7 +174,7 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                                 TooltipBox(
-                                    TooltipDefaults.rememberPlainTooltipPositionProvider(),
+                                    TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
                                     {
                                         PlainTooltip {
                                             Text(stringResource(R.string.dark))
@@ -196,7 +197,7 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                                 TooltipBox(
-                                    TooltipDefaults.rememberPlainTooltipPositionProvider(),
+                                    TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
                                     {
                                         PlainTooltip {
                                             Text(stringResource(R.string.system))
@@ -220,7 +221,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                             TooltipBox(
-                                TooltipDefaults.rememberPlainTooltipPositionProvider(),
+                                TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
                                 {
                                     PlainTooltip {
                                         Text(stringResource(R.string.about))
