@@ -10,7 +10,7 @@
       - add comments
       - add documentation
       - add new apps
-  - [Pull Requests](https://github.com/android/compose-samples/issue?q=author%3Amanabu-nakamura%20OR%20commenter%3Amanabu-nakamura) 🟥
+  - [Pull Requests](https://github.com/android/compose-samples/issues?q=author%3Amanabu-nakamura%20OR%20commenter%3Amanabu-nakamura) 🟥
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
   - [App](https://github.com/manabu-nakamura/app) and [Memo](https://github.com/manabu-nakamura/app/blob/main/docs/memo.md) 🟥
   - [Merged Commits](https://github.com/material-components/material-components-android/commits?author=manabu-nakamura) 🟥
