@@ -2,9 +2,14 @@
     <string name="app_name">Counter</string>
     <string name="count">+1</string>
     <string name="reset">Reset</string>
-    <string name="light">Light</string>
+    <!--string name="light">Light</string>
     <string name="dark">Dark</string>
-    <string name="system">Default</string>
+    <string name="system">Default</string-->
+    <string-array name="theme">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Default</item>
+    </string-array>
     <string name="about">About</string>
     <!--<string name="copyright">© 2026 Manabu Nakamura</string>-->
     <string name="copyright1">© 2026\ </string>
