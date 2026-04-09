@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,6 +26,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.ToggleButton
+import androidx.compose.material3.ToggleButtonDefaults
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
@@ -240,11 +240,12 @@ class MainActivity : ComponentActivity() {
                                             selectedIndex = index
                                             theme(index)
                                         },
-                                        shapes = when (index) {
+/*                                        shapes = when (index) {
                                             0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
                                             themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
                                             else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
-                                        }
+                                        },*/
+                                        colors = ToggleButtonDefaults.tonalToggleButtonColors()
                                     ) {
                                         Icon(
                                             painterResource(icon),
