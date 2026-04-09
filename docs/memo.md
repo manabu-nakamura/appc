@@ -1,3 +1,5 @@
+- [Material 3 Expressive](https://m3.material.io/blog/building-with-m3-expressive)
+
 🟥https://github.com/manabu-nakamura/appc/blob/main/counter/src/main/res/values/themes.xml:
 - `android:backgroundDimAmount`
 ```xml
