@@ -9,7 +9,7 @@ android {
         version = release(36)
     }
     defaultConfig {
-        applicationId = "com.github.manabu_nakamura.counter"
+        applicationId = "com.github.manabu_nakamura.counterc"
         minSdk = 23
         targetSdk = 36
         versionCode = 1
