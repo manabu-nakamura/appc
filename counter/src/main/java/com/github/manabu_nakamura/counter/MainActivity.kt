@@ -17,9 +17,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Surface
@@ -90,6 +92,7 @@ class MainActivity : ComponentActivity() {
                             {
                                 value++
                             },
+                            ButtonDefaults.shapes(),
                             Modifier.fillMaxWidth()
                         ) {
                             Text(stringResource(R.string.count))
@@ -98,6 +101,7 @@ class MainActivity : ComponentActivity() {
                             {
                                 value = 0
                             },
+                            ButtonDefaults.shapes(),
                             Modifier.fillMaxWidth()
                         ) {
                             Text(stringResource(R.string.reset))
@@ -266,7 +270,8 @@ class MainActivity : ComponentActivity() {
                                 IconButton(
                                     {
                                         openDialog = true
-                                    }
+                                    },
+                                    IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
                                         painterResource(R.drawable.outline_info_24),
