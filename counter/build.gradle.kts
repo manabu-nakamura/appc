@@ -6,12 +6,12 @@ plugins {
 android {
     namespace = "com.github.manabu_nakamura.counter"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
     defaultConfig {
         applicationId = "com.github.manabu_nakamura.counterc"
         minSdk = 23
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 //    implementation(platform(libs.androidx.compose.bom))
-    implementation("androidx.compose.material3:material3:1.5.0-alpha17")
+    implementation("androidx.compose.material3:material3:1.5.0-alpha18")
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
