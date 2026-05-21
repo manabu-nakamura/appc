@@ -259,7 +259,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                             TooltipBox(
-                                TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
+                                TooltipDefaults.rememberTooltipPositionProvider(
+                                    TooltipAnchorPosition.Above
+                                ),
                                 {
                                     PlainTooltip {
                                         Text(stringResource(R.string.about))
