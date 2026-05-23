@@ -30,7 +30,7 @@ https://issuetracker.google.com/issues/326356902
 </style>
 ```
 <img src="s4.png" width="150">-><img src="s3.png" width="150">\
-(2) -> (3) `<item name="android:backgroundDimAmount">0.32</item>`\
+(1) -> (2) `<item name="android:backgroundDimAmount">0.32</item>`\
 https://github.com/material-components/material-components-android/issues/3635
 
 🟥https://github.com/manabu-nakamura/appc/blob/main/game/src/main/java/com/github/manabu_nakamura/game/MainActivity.kt:
