@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    namespace = "com.github.manabu_nakamura.counter"
+    namespace = "com.github.manabu_nakamura.game"
     compileSdk {
         version = release(37)
     }
     defaultConfig {
-        applicationId = "com.github.manabu_nakamura.counter"
+        applicationId = "com.github.manabu_nakamura.game"
         minSdk = 23
-        targetSdk = 34
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -44,7 +44,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.datastore.preferences)
 /*    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
