@@ -7,6 +7,7 @@
       - https://developer.android.com/develop/ui/compose/layouts/insets
         - https://issuetracker.google.com/issues/326356902
       - https://developer.android.com/topic/libraries/architecture/datastore
+    - [game](game)
     - Plan
       - add comments
       - add documentation

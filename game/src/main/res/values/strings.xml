@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Game</string>
+    <string name="m">%d</string>
+    <string name="message0">Guess a random number between 0 and %d.</string>
+    <string name="message1">(%d) Your guess is LOWER. Guess the random number between 0 and %d.</string>
+    <string name="message2">(%d) Right! Guess another random number between 0 and %d.</string>
+    <string name="message3">(%d) Your guess is HIGHER. Guess the random number between 0 and %d.</string>
+</resources>
