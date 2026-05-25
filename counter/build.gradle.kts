@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.github.manabu_nakamura.counter"
         minSdk = 23
-        targetSdk = 34
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
