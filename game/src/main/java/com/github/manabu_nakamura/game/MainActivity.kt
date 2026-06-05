@@ -45,32 +45,46 @@ class MainActivity : ComponentActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(
+            savedInstanceState
+        )
         enableEdgeToEdge()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             window.isNavigationBarContrastEnforced = false
         }
         setContent {
             GameTheme {
-                Surface(Modifier.fillMaxSize()) {
+                Surface(
+                    Modifier.fillMaxSize()
+                ) {
                     var count by rememberSaveable {
-                        mutableIntStateOf(0)
+                        mutableIntStateOf(
+                            0
+                        )
                     }
                     var answer by rememberSaveable {
-                        mutableIntStateOf((Math.random() * MAX).toInt())
+                        mutableIntStateOf(
+                            (Math.random() * MAX).toInt()
+                        )
                     }//answer = 0～MAX - 1
                     var message by rememberSaveable {
-                        mutableStateOf(getString(R.string.message0, MAX - 1))
+                        mutableStateOf(
+                            getString(R.string.message0, MAX - 1)
+                        )
                     }
                     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(
                         rememberTopAppBarState()
                     )
                     Scaffold(
-                        Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+                        Modifier.nestedScroll(
+                            scrollBehavior.nestedScrollConnection
+                        ),
                         {
                             TopAppBar(
                                 {
-                                    Text(message)
+                                    Text(
+                                        message
+                                    )
                                 },
                                 scrollBehavior = scrollBehavior
                             )
@@ -78,8 +92,12 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Column(
                             Modifier
-                                .verticalScroll(rememberScrollState())
-                                .padding(it)
+                                .verticalScroll(
+                                    rememberScrollState()
+                                )
+                                .padding(
+                                    it
+                                )
                         ) {
                             for (i in 0 until MAX) {
                                 Row(
@@ -108,15 +126,23 @@ class MainActivity : ComponentActivity() {
                                                 }
                                             }
                                         )
-                                        .padding(10.dp)
+                                        .padding(
+                                            10.dp
+                                        )
                                         .fillMaxWidth()
                                 ) {
                                     Checkbox(
                                         viewModel.list[i],
                                         null
                                     )
-                                    Spacer(Modifier.width(10.dp))
-                                    Text(i.toString())
+                                    Spacer(
+                                        Modifier.width(
+                                            10.dp
+                                        )
+                                    )
+                                    Text(
+                                        i.toString()
+                                    )
                                 }
                             }
                         }
@@ -127,6 +153,8 @@ class MainActivity : ComponentActivity() {
     }
 
     class ViewModel2 : ViewModel() {
-        val list = MutableList(MAX) { false }.toMutableStateList()
+        val list = MutableList(
+            MAX
+        ) { false }.toMutableStateList()
     }
 }
