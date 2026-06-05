@@ -61,20 +61,32 @@ import kotlinx.coroutines.runBlocking
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3ExpressiveApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(
+            savedInstanceState
+        )
         val darkTheme = when (theme()) {
             0 -> false
             1 -> true
             else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
         }
         val systemBarStyle = if (darkTheme)
-            SystemBarStyle.dark(Color.TRANSPARENT)
+            SystemBarStyle.dark(
+                Color.TRANSPARENT
+            )
         else
-            SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
-        enableEdgeToEdge(systemBarStyle, systemBarStyle)
+            SystemBarStyle.light(
+                Color.TRANSPARENT,
+                Color.TRANSPARENT
+            )
+        enableEdgeToEdge(
+            systemBarStyle,
+            systemBarStyle
+        )
         setContent {
             CounterTheme(darkTheme) {
-                Surface(Modifier.fillMaxSize()) {
+                Surface(
+                    Modifier.fillMaxSize()
+                ) {
                     Column(
                         Modifier
                             .safeDrawingPadding()
@@ -82,7 +94,9 @@ class MainActivity : ComponentActivity() {
                         Arrangement.Bottom
                     ) {
                         var value by rememberSaveable {
-                            mutableIntStateOf(0)
+                            mutableIntStateOf(
+                                0
+                            )
                         }
                         Text(
                             value.toString(),
@@ -96,7 +110,11 @@ class MainActivity : ComponentActivity() {
                             ButtonDefaults.shapes(),
                             Modifier.fillMaxWidth()
                         ) {
-                            Text(stringResource(R.string.count))
+                            Text(
+                                stringResource(
+                                R.string.count
+                                )
+                            )
                         }
                         Button(
                             {
@@ -105,10 +123,16 @@ class MainActivity : ComponentActivity() {
                             ButtonDefaults.shapes(),
                             Modifier.fillMaxWidth()
                         ) {
-                            Text(stringResource(R.string.reset))
+                            Text(
+                                stringResource(
+                                    R.string.reset
+                                )
+                            )
                         }
                         var openDialog by rememberSaveable {
-                            mutableStateOf(false)
+                            mutableStateOf(
+                                false
+                            )
                         }
                         if (openDialog) {
                             AlertDialog(
@@ -121,20 +145,34 @@ class MainActivity : ComponentActivity() {
                                             openDialog = false
                                         }
                                     ) {
-                                        Text(stringResource(R.string.ok))
+                                        Text(
+                                            stringResource(
+                                                R.string.ok
+                                            )
+                                        )
                                     }
                                 },
                                 title = {
-                                    Text(stringResource(R.string.app_name))
+                                    Text(
+                                        stringResource(
+                                            R.string.app_name
+                                        )
+                                    )
                                 },
                                 text = {
 //                                    Text(stringResource(R.string.copyright))
                                     Text(
                                         buildAnnotatedString {
-                                            append(stringResource(R.string.copyright1))
+                                            append(
+                                                stringResource(
+                                                    R.string.copyright1
+                                                )
+                                            )
                                             withLink(
                                                 LinkAnnotation.Url(
-                                                    stringResource(R.string.copyright2),
+                                                    stringResource(
+                                                        R.string.copyright2
+                                                    ),
                                                     TextLinkStyles(
                                                         SpanStyle(
                                                             MaterialTheme.colorScheme.primary,
@@ -143,7 +181,11 @@ class MainActivity : ComponentActivity() {
                                                     )
                                                 )
                                             ) {
-                                                append(stringResource(R.string.copyright3))
+                                                append(
+                                                    stringResource(
+                                                        R.string.copyright3
+                                                    )
+                                                )
                                             }
                                         }
                                     )
@@ -225,8 +267,16 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                             }*/
-                            val themes = listOf(R.drawable.outline_light_mode_24, R.drawable.outline_dark_mode_24, R.drawable.outline_android_24)
-                            var selectedIndex by rememberSaveable { mutableIntStateOf(theme()) }
+                            val themes = listOf(
+                                R.drawable.outline_light_mode_24,
+                                R.drawable.outline_dark_mode_24,
+                                R.drawable.outline_android_24
+                            )
+                            var selectedIndex by rememberSaveable {
+                                mutableIntStateOf(
+                                    theme()
+                                )
+                            }
                             themes.forEachIndexed { index, icon ->
                                 TooltipBox(
                                     TooltipDefaults.rememberTooltipPositionProvider(
@@ -234,7 +284,11 @@ class MainActivity : ComponentActivity() {
                                     ),
                                     {
                                         PlainTooltip {
-                                            Text(stringArrayResource(R.array.theme)[index])
+                                            Text(
+                                                stringArrayResource(
+                                                    R.array.theme
+                                                )[index]
+                                            )
                                         }
                                     },
                                     rememberTooltipState()
@@ -253,8 +307,12 @@ class MainActivity : ComponentActivity() {
                                         colors = ToggleButtonDefaults.tonalToggleButtonColors()
                                     ) {
                                         Icon(
-                                            painterResource(icon),
-                                            null
+                                            painterResource(
+                                                icon
+                                            ),
+                                            stringArrayResource(
+                                                R.array.theme
+                                            )[index]
                                         )
                                     }
                                 }
@@ -265,7 +323,11 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 {
                                     PlainTooltip {
-                                        Text(stringResource(R.string.about))
+                                        Text(
+                                            stringResource(
+                                                R.string.about
+                                            )
+                                        )
                                     }
                                 },
                                 rememberTooltipState()
@@ -277,8 +339,12 @@ class MainActivity : ComponentActivity() {
                                     IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
-                                        painterResource(R.drawable.outline_info_24),
-                                        null
+                                        painterResource(
+                                            R.drawable.outline_info_24
+                                        ),
+                                        stringResource(
+                                            R.string.about
+                                        )
                                     )
                                 }
                             }
@@ -290,8 +356,12 @@ class MainActivity : ComponentActivity() {
     }
 
     private companion object {
-        private val Context.dataStore by preferencesDataStore("settings")
-        private val THEME = intPreferencesKey("theme")
+        private val Context.dataStore by preferencesDataStore(
+            "settings"
+        )
+        private val THEME = intPreferencesKey(
+            "theme"
+        )
     }
 
     private fun theme(): Int {
