@@ -12,11 +12,20 @@ val darkTheme = when (theme()) {
     1 -> true
     else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
 }
-val systemBarStyle = if (darkTheme)
-    SystemBarStyle.dark(Color.TRANSPARENT)
-else
-    SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
-enableEdgeToEdge(systemBarStyle, systemBarStyle)
+val systemBarStyle = if (darkTheme) {
+    SystemBarStyle.dark(
+        Color.TRANSPARENT
+    )
+} else {
+    SystemBarStyle.light(
+        Color.TRANSPARENT,
+        Color.TRANSPARENT
+    )
+}
+enableEdgeToEdge(
+    systemBarStyle,
+    systemBarStyle
+)
 ```
 <img src="s2.png" width="150">-><img src="s1.png" width="150">\
 (0) -> (1) `enableEdgeToEdge()`\

@@ -19,7 +19,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -43,8 +42,12 @@ class MainActivity : ComponentActivity() {
     }
     private val viewModel by viewModels<ViewModel2>()
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
+    @OptIn(
+        ExperimentalMaterial3Api::class
+    )
+    override fun onCreate(
+        savedInstanceState: Bundle?
+    ) {
         super.onCreate(
             savedInstanceState
         )
@@ -54,96 +57,99 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             GameTheme {
-                Surface(
-                    Modifier.fillMaxSize()
-                ) {
-                    var count by rememberSaveable {
-                        mutableIntStateOf(
-                            0
-                        )
-                    }
-                    var answer by rememberSaveable {
-                        mutableIntStateOf(
-                            (Math.random() * MAX).toInt()
-                        )
-                    }//answer = 0～MAX - 1
-                    var message by rememberSaveable {
-                        mutableStateOf(
-                            getString(R.string.message0, MAX - 1)
-                        )
-                    }
-                    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(
-                        rememberTopAppBarState()
+                var count by rememberSaveable {
+                    mutableIntStateOf(
+                        0
                     )
-                    Scaffold(
-                        Modifier.nestedScroll(
+                }
+                var answer by rememberSaveable {
+                    mutableIntStateOf(
+                        (Math.random() * MAX).toInt()
+                    )
+                }//answer = 0～MAX - 1
+                var message by rememberSaveable {
+                    mutableStateOf(
+                        getString(
+                            R.string.message0,
+                            MAX - 1
+                        )
+                    )
+                }
+                val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(
+                    rememberTopAppBarState()
+                )
+                Scaffold(
+                    Modifier
+                        .fillMaxSize()
+                        .nestedScroll(
                             scrollBehavior.nestedScrollConnection
                         ),
-                        {
-                            TopAppBar(
-                                {
-                                    Text(
-                                        message
-                                    )
-                                },
-                                scrollBehavior = scrollBehavior
+                    {
+                        TopAppBar(
+                            {
+                                Text(
+                                    message
+                                )
+                            },
+                            scrollBehavior = scrollBehavior
+                        )
+                    }
+                ) {
+                    Column(
+                        Modifier
+                            .verticalScroll(
+                                rememberScrollState()
                             )
-                        }
+                            .padding(
+                                it
+                            )
                     ) {
-                        Column(
-                            Modifier
-                                .verticalScroll(
-                                    rememberScrollState()
-                                )
-                                .padding(
-                                    it
-                                )
-                        ) {
-                            for (i in 0 until MAX) {
-                                Row(
-                                    Modifier
-                                        .toggleable(
-                                            viewModel.list[i],
-                                            role = Role.Checkbox,
-                                            onValueChange = {
-                                                viewModel.list[i] = true
-                                                count++
-                                                message = getString(
-                                                    if (i < answer) {
-                                                        R.string.message1
-                                                    } else if (i == answer) {
-                                                        R.string.message2
-                                                    } else {
-                                                        R.string.message3
-                                                    }, count, MAX - 1
-                                                )
-                                                if (i == answer) {
-                                                    count = 0
-                                                    answer = (Math.random() * MAX).toInt()//answer = 0～MAX - 1
-                                                    for (j in 0 until MAX) {
-                                                        viewModel.list[j] = false
-                                                    }
+                        for (i in 0 until MAX) {
+                            Row(
+                                Modifier
+                                    .toggleable(
+                                        viewModel.list[i],
+                                        role = Role.Checkbox,
+                                        onValueChange = {
+                                            viewModel.list[i] = true
+                                            count++
+                                            message = getString(
+                                                if (i < answer) {
+                                                    R.string.message1
+                                                } else if (i == answer) {
+                                                    R.string.message2
+                                                } else {
+                                                    R.string.message3
+                                                },
+                                                count,
+                                                MAX - 1
+                                            )
+                                            if (i == answer) {
+                                                count = 0
+                                                answer = (Math.random() * MAX).toInt()//answer = 0～MAX - 1
+                                                for (j in 0 until MAX) {
+                                                    viewModel.list[j] = false
                                                 }
                                             }
-                                        )
-                                        .padding(
-                                            10.dp
-                                        )
-                                        .fillMaxWidth()
-                                ) {
-                                    Checkbox(
-                                        viewModel.list[i],
-                                        null
+                                        }
                                     )
-                                    Spacer(
-                                        Modifier.width(
-                                            10.dp
-                                        )
+                                    .padding(
+                                        10.dp
                                     )
-                                    Text(
-                                        i.toString()
+                                    .fillMaxWidth()
+                            ) {
+                                Checkbox(
+                                    viewModel.list[i],
+                                    null
+                                )
+                                Spacer(
+                                    Modifier.width(
+                                        10.dp
                                     )
-                                }
+                                )
+                                Text(
+                                    i.toString()
+                                )
                             }
                         }
                     }
@@ -155,6 +161,8 @@ class MainActivity : ComponentActivity() {
     class ViewModel2 : ViewModel() {
         val list = MutableList(
             MAX
-        ) { false }.toMutableStateList()
+        ) {
+            false
+        }.toMutableStateList()
     }
 }
