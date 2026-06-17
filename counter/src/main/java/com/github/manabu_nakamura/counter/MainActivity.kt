@@ -8,26 +8,22 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-//import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.ToggleButtonDefaults
 import androidx.compose.material3.TooltipAnchorPosition
@@ -50,7 +46,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
-import androidx.compose.ui.unit.dp
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -59,8 +54,12 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
+    @OptIn(
+        ExperimentalMaterial3ExpressiveApi::class
+    )
+    override fun onCreate(
+        savedInstanceState: Bundle?
+    ) {
         super.onCreate(
             savedInstanceState
         )
@@ -69,29 +68,31 @@ class MainActivity : ComponentActivity() {
             1 -> true
             else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
         }
-        val systemBarStyle = if (darkTheme)
+        val systemBarStyle = if (darkTheme) {
             SystemBarStyle.dark(
                 Color.TRANSPARENT
             )
-        else
+        } else {
             SystemBarStyle.light(
                 Color.TRANSPARENT,
                 Color.TRANSPARENT
             )
+        }
         enableEdgeToEdge(
             systemBarStyle,
             systemBarStyle
         )
         setContent {
-            CounterTheme(darkTheme) {
-                Surface(
+            CounterTheme(
+                darkTheme
+            ) {
+                Scaffold(
                     Modifier.fillMaxSize()
                 ) {
                     Column(
-                        Modifier
-                            .safeDrawingPadding()
-                            .padding(horizontal = 5.dp),
-                        Arrangement.Bottom
+                        Modifier.padding(
+                            it
+                        )
                     ) {
                         var value by rememberSaveable {
                             mutableIntStateOf(
@@ -112,7 +113,7 @@ class MainActivity : ComponentActivity() {
                         ) {
                             Text(
                                 stringResource(
-                                R.string.count
+                                    R.string.count
                                 )
                             )
                         }
@@ -140,10 +141,11 @@ class MainActivity : ComponentActivity() {
                                     openDialog = false
                                 },
                                 {
-                                    TextButton(
+                                    IconButton(
                                         {
                                             openDialog = false
-                                        }
+                                        },
+                                        IconButtonDefaults.shapes()
                                     ) {
                                         Text(
                                             stringResource(
@@ -193,80 +195,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         Row {
-/*                            var selectedIndex by rememberSaveable {
-                                mutableIntStateOf(theme())
-                            }
-                            SingleChoiceSegmentedButtonRow {
-                                TooltipBox(
-                                    TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
-                                    {
-                                        PlainTooltip {
-                                            Text(stringResource(R.string.light))
-                                        }
-                                    },
-                                    rememberTooltipState()
-                                ) {
-                                    SegmentedButton(
-                                        selectedIndex == 0,
-                                        {
-                                            selectedIndex = 0
-                                            theme(0)
-                                        },
-                                        SegmentedButtonDefaults.itemShape(0, 3)
-                                    ) {
-                                        Icon(
-                                            painterResource(R.drawable.outline_light_mode_24),
-                                            null
-                                        )
-                                    }
-                                }
-                                TooltipBox(
-                                    TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
-                                    {
-                                        PlainTooltip {
-                                            Text(stringResource(R.string.dark))
-                                        }
-                                    },
-                                    rememberTooltipState()
-                                ) {
-                                    SegmentedButton(
-                                        selectedIndex == 1,
-                                        {
-                                            selectedIndex = 1
-                                            theme(1)
-                                        },
-                                        SegmentedButtonDefaults.itemShape(1, 3)
-                                    ) {
-                                        Icon(
-                                            painterResource(R.drawable.outline_dark_mode_24),
-                                            null
-                                        )
-                                    }
-                                }
-                                TooltipBox(
-                                    TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
-                                    {
-                                        PlainTooltip {
-                                            Text(stringResource(R.string.system))
-                                        }
-                                    },
-                                    rememberTooltipState()
-                                ) {
-                                    SegmentedButton(
-                                        selectedIndex == 2,
-                                        {
-                                            selectedIndex = 2
-                                            theme(2)
-                                        },
-                                        SegmentedButtonDefaults.itemShape(2, 3)
-                                    ) {
-                                        Icon(
-                                            painterResource(R.drawable.outline_android_24),
-                                            null
-                                        )
-                                    }
-                                }
-                            }*/
                             val themes = listOf(
                                 R.drawable.outline_light_mode_24,
                                 R.drawable.outline_dark_mode_24,
@@ -297,7 +225,9 @@ class MainActivity : ComponentActivity() {
                                         selectedIndex == index,
                                         {
                                             selectedIndex = index
-                                            theme(index)
+                                            theme(
+                                                index
+                                            )
                                         },
 /*                                        shapes = when (index) {
                                             0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
