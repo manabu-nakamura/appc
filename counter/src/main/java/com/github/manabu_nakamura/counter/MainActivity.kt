@@ -46,6 +46,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
+import androidx.compose.ui.unit.dp
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -87,7 +88,11 @@ class MainActivity : ComponentActivity() {
                 darkTheme
             ) {
                 Scaffold(
-                    Modifier.fillMaxSize()
+                    Modifier
+                        .fillMaxSize()
+                        .padding(
+                            horizontal = 5.dp
+                        )
                 ) {
                     Column(
                         Modifier.padding(
