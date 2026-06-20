@@ -8,11 +8,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -22,7 +24,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.ToggleButtonDefaults
@@ -87,17 +89,16 @@ class MainActivity : ComponentActivity() {
             CounterTheme(
                 darkTheme
             ) {
-                Scaffold(
-                    Modifier
-                        .fillMaxSize()
-                        .padding(
-                            horizontal = 5.dp
-                        )
+                Surface(
+                    Modifier.fillMaxSize()
                 ) {
                     Column(
-                        Modifier.padding(
-                            it
-                        )
+                        Modifier
+                            .safeDrawingPadding()
+                            .padding(
+                            5.dp
+                            ),
+                        Arrangement.Bottom
                     ) {
                         var value by rememberSaveable {
                             mutableIntStateOf(
