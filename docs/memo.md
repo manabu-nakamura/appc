@@ -34,7 +34,7 @@ https://issuetracker.google.com/issues/326356902
 🟥https://github.com/manabu-nakamura/appc/blob/main/counter/src/main/res/values/themes.xml:
 - `android:backgroundDimAmount`
 ```xml
-<style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar">
+<style name="Theme.Counter" parent="android:Theme.Material.Light.NoActionBar">
     <item name="android:backgroundDimAmount">0.32</item>
 </style>
 ```
