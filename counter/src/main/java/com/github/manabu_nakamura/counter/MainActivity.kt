@@ -306,7 +306,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun theme(theme: Int) {
+    private fun theme(
+        theme: Int
+    ) {
         runBlocking {
             dataStore.edit {
                 it[THEME] = theme
