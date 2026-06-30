@@ -27,6 +27,13 @@ enableEdgeToEdge(
     systemBarStyle,
     systemBarStyle
 )
+setContent {
+    ...Theme(
+        darkTheme
+    ) {
+        ...
+    }
+}
 ```
 <img src="s2.png" width="150">-><img src="s1.png" width="150">\
 (0) -> (1) `enableEdgeToEdge()`\
@@ -49,6 +56,11 @@ https://github.com/material-components/material-components-android/issues/3635
 enableEdgeToEdge()
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
     window.isNavigationBarContrastEnforced = false
+}
+setContent {
+    ...Theme {
+        ...
+    }
 }
 ```
 <img src="s6.png" width="150">-><img src="s5.png" width="150">\
