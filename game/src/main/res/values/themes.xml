@@ -1,5 +1,4 @@
 <resources>
     <style name="Theme.Game" parent="android:Theme.Material.Light.NoActionBar">
-        <!--item name="android:windowLayoutInDisplayCutoutMode">always</item-->
     </style>
 </resources>
