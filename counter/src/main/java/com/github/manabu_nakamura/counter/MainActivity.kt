@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,8 +27,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.ToggleButton
-import androidx.compose.material3.ToggleButtonDefaults
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
@@ -96,7 +95,7 @@ class MainActivity : ComponentActivity() {
                         Modifier
                             .safeDrawingPadding()
                             .padding(
-                            5.dp
+                                5.dp
                             ),
                         Arrangement.Bottom
                     ) {
@@ -201,56 +200,29 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         Row {
-                            val themes = listOf(
-                                R.drawable.outline_light_mode_24,
-                                R.drawable.outline_dark_mode_24,
-                                R.drawable.outline_android_24
+                            val themes = stringArrayResource(
+                                R.array.theme
                             )
                             var selectedIndex by rememberSaveable {
                                 mutableIntStateOf(
                                     theme()
                                 )
                             }
-                            themes.forEachIndexed { index, icon ->
-                                TooltipBox(
-                                    TooltipDefaults.rememberTooltipPositionProvider(
-                                        TooltipAnchorPosition.Above
-                                    ),
-                                    {
-                                        PlainTooltip {
-                                            Text(
-                                                stringArrayResource(
-                                                    R.array.theme
-                                                )[index]
-                                            )
-                                        }
-                                    },
-                                    rememberTooltipState()
-                                ) {
-                                    ToggleButton(
+                            ButtonGroup(
+                                {
+                                }
+                            ) {
+                                themes.forEachIndexed { index, theme ->
+                                    toggleableItem(
                                         selectedIndex == index,
+                                        theme,
                                         {
                                             selectedIndex = index
                                             theme(
                                                 index
                                             )
-                                        },
-/*                                        shapes = when (index) {
-                                            0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
-                                            themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
-                                            else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
-                                        },*/
-                                        colors = ToggleButtonDefaults.tonalToggleButtonColors()
-                                    ) {
-                                        Icon(
-                                            painterResource(
-                                                icon
-                                            ),
-                                            stringArrayResource(
-                                                R.array.theme
-                                            )[index]
-                                        )
-                                    }
+                                        }
+                                    )
                                 }
                             }
                             TooltipBox(
@@ -285,6 +257,44 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
+/*                        Row(
+                            Modifier.fillMaxWidth(),
+                            Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            val themes = stringArrayResource(
+                                R.array.theme
+                            )
+                            var selectedIndex by rememberSaveable {
+                                mutableIntStateOf(
+                                    theme()
+                                )
+                            }
+                            themes.forEachIndexed { index, theme ->
+                                ToggleButton(
+                                    selectedIndex == index,
+                                    {
+                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+                                    Modifier.weight(
+                                        1f
+                                    ),
+                                    shapes = when (index) {
+                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                    }
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }*/
                     }
                 }
             }
