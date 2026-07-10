@@ -1,4 +1,5 @@
-- [https://m3.material.io/blog/building-with-m3-expressive](https://m3.material.io/blog/building-with-m3-expressive)
+- https://m3.material.io/
+  - [https://m3.material.io/blog/building-with-m3-expressive](https://m3.material.io/blog/building-with-m3-expressive)
   - [https://m3.material.io/blog/m3-expressive-motion-theming](https://m3.material.io/blog/m3-expressive-motion-theming)
 
 > [!CAUTION]
