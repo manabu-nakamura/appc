@@ -290,6 +290,7 @@ class MainActivity : ComponentActivity() {
                                         themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
                                         else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
                                     }
+//                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
                                 ) {
                                     Text(
                                         theme
