@@ -19,6 +19,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
+import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,6 +28,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
@@ -257,7 +259,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
-/*                        Row(
+                        Row(
                             Modifier.fillMaxWidth(),
                             Arrangement.spacedBy(
                                 ButtonGroupDefaults.ConnectedSpaceBetween
@@ -294,7 +296,38 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
                             }
-                        }*/
+                        }
+                        TooltipBox(
+                            TooltipDefaults.rememberTooltipPositionProvider(
+                                TooltipAnchorPosition.Above
+                            ),
+                            {
+                                PlainTooltip {
+                                    Text(
+                                        stringResource(
+                                            R.string.about
+                                        )
+                                    )
+                                }
+                            },
+                            rememberTooltipState()
+                        ) {
+                            IconButton(
+                                {
+                                    openDialog = true
+                                },
+                                IconButtonDefaults.shapes()
+                            ) {
+                                Icon(
+                                    painterResource(
+                                        R.drawable.outline_info_24
+                                    ),
+                                    stringResource(
+                                        R.string.about
+                                    )
+                                )
+                            }
+                        }
                     }
                 }
             }
