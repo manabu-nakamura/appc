@@ -22,12 +22,11 @@ import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
@@ -148,11 +147,11 @@ class MainActivity : ComponentActivity() {
                                     openDialog = false
                                 },
                                 {
-                                    IconButton(
+                                    TextButton(
                                         {
                                             openDialog = false
                                         },
-                                        IconButtonDefaults.shapes()
+                                        ButtonDefaults.shapes()
                                     ) {
                                         Text(
                                             stringResource(
@@ -227,37 +226,6 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
                             }
-                            TooltipBox(
-                                TooltipDefaults.rememberTooltipPositionProvider(
-                                    TooltipAnchorPosition.Above
-                                ),
-                                {
-                                    PlainTooltip {
-                                        Text(
-                                            stringResource(
-                                                R.string.about
-                                            )
-                                        )
-                                    }
-                                },
-                                rememberTooltipState()
-                            ) {
-                                IconButton(
-                                    {
-                                        openDialog = true
-                                    },
-                                    IconButtonDefaults.shapes()
-                                ) {
-                                    Icon(
-                                        painterResource(
-                                            R.drawable.outline_info_24
-                                        ),
-                                        stringResource(
-                                            R.string.about
-                                        )
-                                    )
-                                }
-                            }
                         }
                         Row(
                             Modifier.fillMaxWidth(),
@@ -313,11 +281,11 @@ class MainActivity : ComponentActivity() {
                             },
                             rememberTooltipState()
                         ) {
-                            IconButton(
+                            TextButton(
                                 {
                                     openDialog = true
                                 },
-                                IconButtonDefaults.shapes()
+                                ButtonDefaults.shapes()
                             ) {
                                 Icon(
                                     painterResource(
