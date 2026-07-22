@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Image</string>
+    <string name="open">Open</string>
+    <string name="theme">Theme</string>
+    <string-array name="theme">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Default</item>
+    </string-array>
+    <string name="about">About</string>
+    <!--<string name="copyright">© 2026 Manabu Nakamura</string>-->
+    <string name="copyright1">© 2026\ </string>
+    <string name="copyright2">https://github.com/manabu-nakamura</string>
+    <string name="copyright3">Manabu Nakamura</string>
+    <string name="ok">OK</string>
+</resources>

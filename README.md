@@ -9,6 +9,10 @@
         - https://issuetracker.google.com/issues/326356902
       - https://developer.android.com/topic/libraries/architecture/datastore
     - [game](game)
+    - [image](image)
+      - https://github.com/coil-kt/coil
+      - https://github.com/bumptech/glide
+      - https://developer.android.com/training/data-storage/shared/photo-picker
     - Plan
       - add comments
       - add documentation
@@ -16,7 +20,8 @@
   - [Pull Requests](https://github.com/android/compose-samples/issues?q=author%3Amanabu-nakamura%20OR%20commenter%3Amanabu-nakamura) 🟥
 
 <img src="docs/s1.png" width="150">\
-<img src="docs/s7.png" width="150">
+<img src="docs/s7.png" width="150">\
+<img src="docs/s9.png" width="150">
 
 - [Material Components for Android](https://github.com/material-components/material-components-android/)
   - [App](https://github.com/manabu-nakamura/app) and [Memo](https://github.com/manabu-nakamura/app/blob/main/docs/memo.md) 🟥
