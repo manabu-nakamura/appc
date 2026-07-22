@@ -41,14 +41,23 @@ setContent {
 https://issuetracker.google.com/issues/326356902
 
 🟥https://github.com/manabu-nakamura/appc/blob/main/counter/src/main/res/values/themes.xml:
-- `android:backgroundDimAmount`
+- [`android:enforceNavigationBarContrast`](https://developer.android.com/reference/android/R.attr#enforceNavigationBarContrast)
+```xml
+<style name="Theme.Counter" parent="android:Theme.Material.Light.NoActionBar">
+    <item name="android:enforceNavigationBarContrast">false</item>
+</style>
+```
+<img src="s4.png" width="150">-><img src="s3.png" width="150">\
+(1) -> (2) `<item name="android:enforceNavigationBarContrast">false</item>`
+
+- [`android:backgroundDimAmount`](https://developer.android.com/reference/android/R.attr#backgroundDimAmount)
 ```xml
 <style name="Theme.Counter" parent="android:Theme.Material.Light.NoActionBar">
     <item name="android:backgroundDimAmount">0.32</item>
 </style>
 ```
-<img src="s4.png" width="150">-><img src="s3.png" width="150">\
-(1) -> (2) `<item name="android:backgroundDimAmount">0.32</item>`\
+<img src="s6.png" width="150">-><img src="s5.png" width="150">\
+(1) -> (3) `<item name="android:backgroundDimAmount">0.32</item>`\
 https://github.com/material-components/material-components-android/issues/3635
 
 🟥https://github.com/manabu-nakamura/appc/blob/main/game/src/main/java/com/github/manabu_nakamura/game/MainActivity.kt:
@@ -64,7 +73,7 @@ setContent {
     }
 }
 ```
-<img src="s6.png" width="150">-><img src="s5.png" width="150">\
+<img src="s8.png" width="150">-><img src="s7.png" width="150">\
 (0) -> (1) `enableEdgeToEdge()`\
 https://issuetracker.google.com/issues/326356902
 

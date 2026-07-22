@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,14 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import com.github.manabu_nakamura.game.ui.theme.GameTheme
 
 class MainActivity : ComponentActivity() {
     private companion object {
         private const val MAX = 20
     }
-    private val viewModel by viewModels<ViewModel2>()
 
     @OptIn(
         ExperimentalMaterial3Api::class
@@ -57,16 +54,6 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             GameTheme {
-                var count by rememberSaveable {
-                    mutableIntStateOf(
-                        0
-                    )
-                }
-                var answer by rememberSaveable {
-                    mutableIntStateOf(
-                        (Math.random() * MAX).toInt()
-                    )
-                }//answer = 0～MAX - 1
                 var message by rememberSaveable {
                     mutableStateOf(
                         getString(
@@ -104,14 +91,31 @@ class MainActivity : ComponentActivity() {
                                 it
                             )
                     ) {
+                        var answer by rememberSaveable {
+                            mutableIntStateOf(
+                                (Math.random() * MAX).toInt()
+                            )
+                        }//answer = 0～MAX - 1
+                        var count by rememberSaveable {
+                            mutableIntStateOf(
+                                0
+                            )
+                        }
+                        val list = rememberSaveable {
+                            MutableList(
+                                MAX
+                            ) {
+                                false
+                            }.toMutableStateList()
+                        }
                         for (i in 0 until MAX) {
                             Row(
                                 Modifier
                                     .toggleable(
-                                        viewModel.list[i],
+                                        list[i],
                                         role = Role.Checkbox,
                                         onValueChange = {
-                                            viewModel.list[i] = true
+                                            list[i] = true
                                             count++
                                             message = getString(
                                                 if (i < answer) {
@@ -128,7 +132,7 @@ class MainActivity : ComponentActivity() {
                                                 count = 0
                                                 answer = (Math.random() * MAX).toInt()//answer = 0～MAX - 1
                                                 for (j in 0 until MAX) {
-                                                    viewModel.list[j] = false
+                                                    list[j] = false
                                                 }
                                             }
                                         }
@@ -139,7 +143,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                             ) {
                                 Checkbox(
-                                    viewModel.list[i],
+                                    list[i],
                                     null
                                 )
                                 Spacer(
@@ -156,13 +160,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    class ViewModel2 : ViewModel() {
-        val list = MutableList(
-            MAX
-        ) {
-            false
-        }.toMutableStateList()
     }
 }

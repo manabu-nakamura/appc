@@ -11,10 +11,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -24,11 +26,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.ToggleButton
+import androidx.compose.material3.ToggleButtonDefaults
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
@@ -38,6 +42,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
@@ -138,20 +143,80 @@ class MainActivity : ComponentActivity() {
                                 )
                             )
                         }
-                        var openDialog by rememberSaveable {
+                        var bottomSheet by rememberSaveable {
                             mutableStateOf(
                                 false
                             )
                         }
-                        if (openDialog) {
+                        if (bottomSheet) {
+                            ModalBottomSheet(
+                                {
+                                    bottomSheet = false
+                                }
+                            ) {
+                                Column(
+                                    Modifier.padding(
+                                        horizontal = 10.dp
+                                    )
+                                ) {
+                                    val themes = stringArrayResource(
+                                        R.array.theme
+                                    )
+                                    val icons = listOf(
+                                        R.drawable.outline_light_mode_24,
+                                        R.drawable.outline_dark_mode_24,
+                                        R.drawable.outline_android_24
+                                    )
+                                    themes.forEachIndexed { index, theme ->
+                                        ToggleButton(
+                                            theme() == index,
+                                            {
+                                                theme(
+                                                    index
+                                                )
+                                            },
+                                            Modifier.fillMaxWidth(),
+                                            colors = ToggleButtonDefaults.elevatedToggleButtonColors()
+                                        ) {
+                                            Row(
+                                                Modifier.fillMaxWidth(),
+                                                Arrangement.Start,
+                                                Alignment.CenterVertically
+                                            ) {
+                                                Icon(
+                                                    painterResource(
+                                                        icons[index]
+                                                    ),
+                                                    theme
+                                                )
+                                                Spacer(
+                                                    Modifier.size(
+                                                        ToggleButtonDefaults.IconSpacing
+                                                    )
+                                                )
+                                                Text(
+                                                    theme
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        var dialog by rememberSaveable {
+                            mutableStateOf(
+                                false
+                            )
+                        }
+                        if (dialog) {
                             AlertDialog(
                                 {
-                                    openDialog = false
+                                    dialog = false
                                 },
                                 {
                                     TextButton(
                                         {
-                                            openDialog = false
+                                            dialog = false
                                         },
                                         ButtonDefaults.shapes()
                                     ) {
@@ -206,11 +271,7 @@ class MainActivity : ComponentActivity() {
                             val themes = stringArrayResource(
                                 R.array.theme
                             )
-                            var selectedIndex by rememberSaveable {
-                                mutableIntStateOf(
-                                    theme()
-                                )
-                            }
+                            var selectedIndex = theme()
                             ButtonGroup(
                                 {
                                 }
@@ -238,11 +299,7 @@ class MainActivity : ComponentActivity() {
                             val themes = stringArrayResource(
                                 R.array.theme
                             )
-                            var selectedIndex by rememberSaveable {
-                                mutableIntStateOf(
-                                    theme()
-                                )
-                            }
+                            var selectedIndex = theme()
                             themes.forEachIndexed { index, theme ->
                                 ToggleButton(
                                     selectedIndex == index,
@@ -268,35 +325,68 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
-                        TooltipBox(
-                            TooltipDefaults.rememberTooltipPositionProvider(
-                                TooltipAnchorPosition.Above
-                            ),
-                            {
-                                PlainTooltip {
-                                    Text(
+                        Row {
+                            TooltipBox(
+                                TooltipDefaults.rememberTooltipPositionProvider(
+                                    TooltipAnchorPosition.Above
+                                ),
+                                {
+                                    PlainTooltip {
+                                        Text(
+                                            stringResource(
+                                                R.string.theme
+                                            )
+                                        )
+                                    }
+                                },
+                                rememberTooltipState()
+                            ) {
+                                TextButton(
+                                    {
+                                        bottomSheet = true
+                                    },
+                                    ButtonDefaults.shapes()
+                                ) {
+                                    Icon(
+                                        painterResource(
+                                            R.drawable.outline_palette_24
+                                        ),
+                                        stringResource(
+                                            R.string.theme
+                                        )
+                                    )
+                                }
+                            }
+                            TooltipBox(
+                                TooltipDefaults.rememberTooltipPositionProvider(
+                                    TooltipAnchorPosition.Above
+                                ),
+                                {
+                                    PlainTooltip {
+                                        Text(
+                                            stringResource(
+                                                R.string.about
+                                            )
+                                        )
+                                    }
+                                },
+                                rememberTooltipState()
+                            ) {
+                                TextButton(
+                                    {
+                                        dialog = true
+                                    },
+                                    ButtonDefaults.shapes()
+                                ) {
+                                    Icon(
+                                        painterResource(
+                                            R.drawable.outline_info_24
+                                        ),
                                         stringResource(
                                             R.string.about
                                         )
                                     )
                                 }
-                            },
-                            rememberTooltipState()
-                        ) {
-                            TextButton(
-                                {
-                                    openDialog = true
-                                },
-                                ButtonDefaults.shapes()
-                            ) {
-                                Icon(
-                                    painterResource(
-                                        R.drawable.outline_info_24
-                                    ),
-                                    stringResource(
-                                        R.string.about
-                                    )
-                                )
                             }
                         }
                     }
