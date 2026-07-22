@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.Image" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:backgroundDimAmount">0.32</item>
+    </style>
+</resources>

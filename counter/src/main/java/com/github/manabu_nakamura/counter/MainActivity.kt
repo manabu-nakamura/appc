@@ -23,7 +23,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -64,8 +63,7 @@ import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
     @OptIn(
-        ExperimentalMaterial3Api::class,
-        ExperimentalMaterial3ExpressiveApi::class
+        ExperimentalMaterial3Api::class
     )
     override fun onCreate(
         savedInstanceState: Bundle?

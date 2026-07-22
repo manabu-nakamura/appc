@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "appc"
 include(":counter")
 include(":game")
+include(":image")
