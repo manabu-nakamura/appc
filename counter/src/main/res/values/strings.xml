@@ -2,6 +2,7 @@
     <string name="app_name">Counter</string>
     <string name="count">+1</string>
     <string name="reset">Reset</string>
+    <string name="theme">Theme</string>
     <!--string name="light">Light</string>
     <string name="dark">Dark</string>
     <string name="system">Default</string-->
