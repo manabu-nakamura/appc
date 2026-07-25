@@ -115,7 +115,6 @@ class MainActivity : ComponentActivity() {
                                         list[i],
                                         role = Role.Checkbox,
                                         onValueChange = {
-                                            list[i] = true
                                             count++
                                             message = getString(
                                                 if (i < answer) {
@@ -128,9 +127,10 @@ class MainActivity : ComponentActivity() {
                                                 count,
                                                 MAX - 1
                                             )
+                                            list[i] = true
                                             if (i == answer) {
-                                                count = 0
                                                 answer = (Math.random() * MAX).toInt()//answer = 0～MAX - 1
+                                                count = 0
                                                 for (j in 0 until MAX) {
                                                     list[j] = false
                                                 }
