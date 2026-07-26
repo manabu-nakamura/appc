@@ -95,19 +95,19 @@ class MainActivity : ComponentActivity() {
                             mutableIntStateOf(
                                 (Math.random() * MAX).toInt()
                             )
-                        }//answer = 0～MAX - 1
+                        }//answer = 0 ~ MAX - 1
                         var count by rememberSaveable {
                             mutableIntStateOf(
                                 0
                             )
                         }
                         val list = rememberSaveable {
-                            MutableList(
+                            List(
                                 MAX
                             ) {
                                 false
                             }.toMutableStateList()
-                        }
+                        }//list[0 ~ MAX - 1] = false
                         for (i in 0 until MAX) {
                             Row(
                                 Modifier
@@ -129,11 +129,11 @@ class MainActivity : ComponentActivity() {
                                             )
                                             list[i] = true
                                             if (i == answer) {
-                                                answer = (Math.random() * MAX).toInt()//answer = 0～MAX - 1
+                                                answer = (Math.random() * MAX).toInt()//answer = 0 ~ MAX - 1
                                                 count = 0
                                                 for (j in 0 until MAX) {
                                                     list[j] = false
-                                                }
+                                                }//list[0 ~ MAX - 1] = false
                                             }
                                         }
                                     )
