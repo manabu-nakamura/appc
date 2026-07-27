@@ -129,121 +129,47 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     Modifier.fillMaxSize(),
                     bottomBar = {
-                        FlexibleBottomAppBar(
-                            content = {
-                                TooltipBox(
-                                    TooltipDefaults.rememberTooltipPositionProvider(
-                                        TooltipAnchorPosition.Above
-                                    ),
-                                    {
-                                        PlainTooltip {
-                                            Text(
-                                                stringResource(
-                                                    R.string.open
-                                                )
-                                            )
-                                        }
-                                    },
-                                    rememberTooltipState()
-                                ) {
-                                    TextButton(
-                                        {
-                                            picker.launch(
-                                                PickVisualMediaRequest(
-                                                    ActivityResultContracts.PickVisualMedia.ImageOnly
-                                                )
-                                            )
-                                        },
-                                        ButtonDefaults.shapes()
-                                    ) {
-                                        Icon(
-                                            painterResource(
-                                                R.drawable.outline_image_24
-                                            ),
+                        FlexibleBottomAppBar {
+                            TooltipBox(
+                                TooltipDefaults.rememberTooltipPositionProvider(
+                                    TooltipAnchorPosition.Above
+                                ),
+                                {
+                                    PlainTooltip {
+                                        Text(
                                             stringResource(
                                                 R.string.open
                                             )
                                         )
                                     }
-                                }
-                                Box {
-                                    var expanded by rememberSaveable {
-                                        mutableStateOf(
-                                            false
+                                },
+                                rememberTooltipState()
+                            ) {
+                                TextButton(
+                                    {
+                                        picker.launch(
+                                            PickVisualMediaRequest(
+                                                ActivityResultContracts.PickVisualMedia.ImageOnly
+                                            )
                                         )
-                                    }
-                                    TooltipBox(
-                                        TooltipDefaults.rememberTooltipPositionProvider(
-                                            TooltipAnchorPosition.Above
+                                    },
+                                    ButtonDefaults.shapes()
+                                ) {
+                                    Icon(
+                                        painterResource(
+                                            R.drawable.outline_image_24
                                         ),
-                                        {
-                                            PlainTooltip {
-                                                Text(
-                                                    stringResource(
-                                                        R.string.theme
-                                                    )
-                                                )
-                                            }
-                                        },
-                                        rememberTooltipState()
-                                    ) {
-                                        TextButton(
-                                            {
-                                                expanded = !expanded
-                                            },
-                                            ButtonDefaults.shapes()
-                                        ) {
-                                            Icon(
-                                                painterResource(
-                                                    R.drawable.outline_palette_24
-                                                ),
-                                                stringResource(
-                                                    R.string.theme
-                                                )
-                                            )
-                                        }
-                                    }
-                                    val themes = stringArrayResource(
-                                        R.array.theme
+                                        stringResource(
+                                            R.string.open
+                                        )
                                     )
-                                    val icons = listOf(
-                                        R.drawable.outline_light_mode_24,
-                                        R.drawable.outline_dark_mode_24,
-                                        R.drawable.outline_android_24
+                                }
+                            }
+                            Box {
+                                var expanded by rememberSaveable {
+                                    mutableStateOf(
+                                        false
                                     )
-                                    DropdownMenu(
-                                        expanded,
-                                        {
-                                            expanded = false
-                                        }
-                                    ) {
-                                        themes.forEachIndexed { index, theme ->
-                                            DropdownMenuItem(
-                                                {
-                                                    Text(
-                                                        theme
-                                                    )
-                                                },
-                                                {
-                                                    theme(
-                                                        index
-                                                    )
-                                                },
-                                                leadingIcon = {
-                                                    Icon(
-                                                        painterResource(
-                                                            if (theme() == index) {
-                                                                icons[index]
-                                                            } else {
-                                                                R.drawable.empty
-                                                            }
-                                                        ),
-                                                        theme
-                                                    )
-                                                }
-                                            )
-                                        }
-                                    }
                                 }
                                 TooltipBox(
                                     TooltipDefaults.rememberTooltipPositionProvider(
@@ -262,7 +188,7 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     TextButton(
                                         {
-                                            bottomSheet = true
+                                            expanded = !expanded
                                         },
                                         ButtonDefaults.shapes()
                                     ) {
@@ -276,39 +202,111 @@ class MainActivity : ComponentActivity() {
                                         )
                                     }
                                 }
-                                TooltipBox(
-                                    TooltipDefaults.rememberTooltipPositionProvider(
-                                        TooltipAnchorPosition.Above
-                                    ),
+                                val themes = stringArrayResource(
+                                    R.array.theme
+                                )
+                                val icons = listOf(
+                                    R.drawable.outline_light_mode_24,
+                                    R.drawable.outline_dark_mode_24,
+                                    R.drawable.outline_android_24
+                                )
+                                DropdownMenu(
+                                    expanded,
                                     {
-                                        PlainTooltip {
-                                            Text(
-                                                stringResource(
-                                                    R.string.about
-                                                )
-                                            )
-                                        }
-                                    },
-                                    rememberTooltipState()
+                                        expanded = false
+                                    }
                                 ) {
-                                    TextButton(
-                                        {
-                                            dialog = true
-                                        },
-                                        ButtonDefaults.shapes()
-                                    ) {
-                                        Icon(
-                                            painterResource(
-                                                R.drawable.outline_info_24
-                                            ),
+                                    themes.forEachIndexed { index, theme ->
+                                        DropdownMenuItem(
+                                            {
+                                                Text(
+                                                    theme
+                                                )
+                                            },
+                                            {
+                                                theme(
+                                                    index
+                                                )
+                                            },
+                                            leadingIcon = {
+                                                Icon(
+                                                    painterResource(
+                                                        if (theme() == index) {
+                                                            icons[index]
+                                                        } else {
+                                                            R.drawable.empty
+                                                        }
+                                                    ),
+                                                    theme
+                                                )
+                                            }
+                                        )
+                                    }
+                                }
+                            }
+                            TooltipBox(
+                                TooltipDefaults.rememberTooltipPositionProvider(
+                                    TooltipAnchorPosition.Above
+                                ),
+                                {
+                                    PlainTooltip {
+                                        Text(
+                                            stringResource(
+                                                R.string.theme
+                                            )
+                                        )
+                                    }
+                                },
+                                rememberTooltipState()
+                            ) {
+                                TextButton(
+                                    {
+                                        bottomSheet = true
+                                    },
+                                    ButtonDefaults.shapes()
+                                ) {
+                                    Icon(
+                                        painterResource(
+                                            R.drawable.outline_palette_24
+                                        ),
+                                        stringResource(
+                                            R.string.theme
+                                        )
+                                    )
+                                }
+                            }
+                            TooltipBox(
+                                TooltipDefaults.rememberTooltipPositionProvider(
+                                    TooltipAnchorPosition.Above
+                                ),
+                                {
+                                    PlainTooltip {
+                                        Text(
                                             stringResource(
                                                 R.string.about
                                             )
                                         )
                                     }
+                                },
+                                rememberTooltipState()
+                            ) {
+                                TextButton(
+                                    {
+                                        dialog = true
+                                    },
+                                    ButtonDefaults.shapes()
+                                ) {
+                                    Icon(
+                                        painterResource(
+                                            R.drawable.outline_info_24
+                                        ),
+                                        stringResource(
+                                            R.string.about
+                                        )
+                                    )
                                 }
                             }
-                        )
+                        }
                     }
                 ) {
                     Column(
