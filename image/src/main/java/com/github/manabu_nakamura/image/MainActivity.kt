@@ -229,16 +229,14 @@ class MainActivity : ComponentActivity() {
                                                 )
                                             },
                                             leadingIcon = {
-                                                Icon(
-                                                    painterResource(
-                                                        if (theme() == index) {
+                                                if (theme() == index) {
+                                                    Icon(
+                                                        painterResource(
                                                             icons[index]
-                                                        } else {
-                                                            R.drawable.empty
-                                                        }
-                                                    ),
-                                                    theme
-                                                )
+                                                        ),
+                                                        theme
+                                                    )
+                                                }
                                             }
                                         )
                                     }
