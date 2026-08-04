@@ -24,6 +24,8 @@ import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.PlainTooltip
@@ -310,12 +312,82 @@ class MainActivity : ComponentActivity() {
                                     Modifier.weight(
                                         1f
                                     ),
+//                                    shapes = when (index) {
+//                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+//                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+//                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+//                                    }
+//                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            val themes = stringArrayResource(
+                                R.array.theme
+                            )
+                            var selectedIndex = theme()
+                            themes.forEachIndexed { index, theme ->
+                                ToggleButton(
+                                    selectedIndex == index,
+                                    {
+                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+                                    Modifier.weight(
+                                        1f
+                                    ),
                                     shapes = when (index) {
                                         0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
                                         themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
                                         else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
                                     }
 //                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            val themes = stringArrayResource(
+                                R.array.theme
+                            )
+                            var selectedIndex = theme()
+                            themes.forEachIndexed { index, theme ->
+                                ToggleButton(
+                                    selectedIndex == index,
+                                    {
+                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+                                    Modifier.weight(
+                                        1f
+                                    ),
+//                                    shapes = when (index) {
+//                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+//                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+//                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+//                                    }
+                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
                                 ) {
                                     Text(
                                         theme
@@ -339,11 +411,11 @@ class MainActivity : ComponentActivity() {
                                 },
                                 rememberTooltipState()
                             ) {
-                                TextButton(
+                                IconButton(
                                     {
                                         bottomSheet = true
                                     },
-                                    ButtonDefaults.shapes()
+                                    IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
                                         painterResource(
@@ -370,11 +442,11 @@ class MainActivity : ComponentActivity() {
                                 },
                                 rememberTooltipState()
                             ) {
-                                TextButton(
+                                IconButton(
                                     {
                                         dialog = true
                                     },
-                                    ButtonDefaults.shapes()
+                                    IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
                                         painterResource(

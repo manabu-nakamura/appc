@@ -30,6 +30,8 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FlexibleBottomAppBar
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.PlainTooltip
@@ -145,7 +147,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 rememberTooltipState()
                             ) {
-                                TextButton(
+                                IconButton(
                                     {
                                         picker.launch(
                                             PickVisualMediaRequest(
@@ -153,7 +155,7 @@ class MainActivity : ComponentActivity() {
                                             )
                                         )
                                     },
-                                    ButtonDefaults.shapes()
+                                    IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
                                         painterResource(
@@ -186,11 +188,11 @@ class MainActivity : ComponentActivity() {
                                     },
                                     rememberTooltipState()
                                 ) {
-                                    TextButton(
+                                    IconButton(
                                         {
                                             expanded = !expanded
                                         },
-                                        ButtonDefaults.shapes()
+                                        IconButtonDefaults.shapes()
                                     ) {
                                         Icon(
                                             painterResource(
@@ -257,11 +259,11 @@ class MainActivity : ComponentActivity() {
                                 },
                                 rememberTooltipState()
                             ) {
-                                TextButton(
+                                IconButton(
                                     {
                                         bottomSheet = true
                                     },
-                                    ButtonDefaults.shapes()
+                                    IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
                                         painterResource(
@@ -288,11 +290,11 @@ class MainActivity : ComponentActivity() {
                                 },
                                 rememberTooltipState()
                             ) {
-                                TextButton(
+                                IconButton(
                                     {
                                         dialog = true
                                     },
-                                    ButtonDefaults.shapes()
+                                    IconButtonDefaults.shapes()
                                 ) {
                                     Icon(
                                         painterResource(
