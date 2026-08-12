@@ -27,6 +27,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FlexibleBottomAppBar
 import androidx.compose.material3.Icon
@@ -373,7 +374,7 @@ class MainActivity : ComponentActivity() {
                                                 )
                                             },
                                             Modifier.fillMaxWidth(),
-                                            colors = ToggleButtonDefaults.elevatedToggleButtonColors()
+                                            colors = ElevatedToggleButtonDefaults.elevatedToggleButtonColors()
                                         ) {
                                             Row(
                                                 Modifier.fillMaxWidth(),
