@@ -22,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
+import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -176,7 +177,7 @@ class MainActivity : ComponentActivity() {
                                                 )
                                             },
                                             Modifier.fillMaxWidth(),
-                                            colors = ToggleButtonDefaults.elevatedToggleButtonColors()
+                                            colors = ElevatedToggleButtonDefaults.elevatedToggleButtonColors()
                                         ) {
                                             Row(
                                                 Modifier.fillMaxWidth(),
