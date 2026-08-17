@@ -268,27 +268,28 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
-                        Row {
-                            val themes = stringArrayResource(
-                                R.array.theme
-                            )
-                            var selectedIndex = theme()
-                            ButtonGroup(
-                                {
-                                }
-                            ) {
-                                themes.forEachIndexed { index, theme ->
-                                    toggleableItem(
-                                        selectedIndex == index,
-                                        theme,
-                                        {
-                                            selectedIndex = index
-                                            theme(
-                                                index
-                                            )
-                                        }
-                                    )
-                                }
+                        val themes = stringArrayResource(
+                            R.array.theme
+                        )
+                        var selectedIndex = theme()
+                        ButtonGroup(
+                            {
+                                ButtonGroupDefaults.OverflowIndicator(
+                                    it
+                                )
+                            }
+                        ) {
+                            themes.forEachIndexed { index, theme ->
+                                toggleableItem(
+                                    selectedIndex == index,
+                                    theme,
+                                    {
+                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    }
+                                )
                             }
                         }
                         Row(
@@ -297,10 +298,6 @@ class MainActivity : ComponentActivity() {
                                 ButtonGroupDefaults.ConnectedSpaceBetween
                             )
                         ) {
-                            val themes = stringArrayResource(
-                                R.array.theme
-                            )
-                            var selectedIndex = theme()
                             themes.forEachIndexed { index, theme ->
                                 ToggleButton(
                                     selectedIndex == index,
@@ -332,10 +329,6 @@ class MainActivity : ComponentActivity() {
                                 ButtonGroupDefaults.ConnectedSpaceBetween
                             )
                         ) {
-                            val themes = stringArrayResource(
-                                R.array.theme
-                            )
-                            var selectedIndex = theme()
                             themes.forEachIndexed { index, theme ->
                                 ToggleButton(
                                     selectedIndex == index,
@@ -367,10 +360,6 @@ class MainActivity : ComponentActivity() {
                                 ButtonGroupDefaults.ConnectedSpaceBetween
                             )
                         ) {
-                            val themes = stringArrayResource(
-                                R.array.theme
-                            )
-                            var selectedIndex = theme()
                             themes.forEachIndexed { index, theme ->
                                 ToggleButton(
                                     selectedIndex == index,
