@@ -374,7 +374,7 @@ class MainActivity : ComponentActivity() {
                                                 )
                                             },
                                             Modifier.fillMaxWidth(),
-                                            colors = ElevatedToggleButtonDefaults.elevatedToggleButtonColors()
+                                            colors = ElevatedToggleButtonDefaults.colors()
                                         ) {
                                             Row(
                                                 Modifier.fillMaxWidth(),
