@@ -5,7 +5,7 @@
         - https://m3.material.io/blog/building-with-m3-expressive
         - https://m3.material.io/blog/m3-expressive-motion-theming
       - https://developer.android.com/develop/ui/compose/designsystems/material3
-      - https://developer.android.com/develop/ui/compose/layouts/insets
+      - https://developer.android.com/develop/ui/compose/system/setup-e2e
         - https://issuetracker.google.com/issues/326356902
       - https://developer.android.com/topic/libraries/architecture/datastore
     - [game](game)

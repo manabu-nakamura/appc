@@ -1,13 +1,10 @@
 package com.github.manabu_nakamura.counter
 
 import android.content.Context
-import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,6 +36,7 @@ import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.rememberTooltipState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -57,6 +55,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -74,7 +73,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(
             savedInstanceState
         )
-        val darkTheme = when (theme()) {
+/*        val darkTheme = when (theme()) {
             0 -> false
             1 -> true
             else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
@@ -92,11 +91,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge(
             systemBarStyle,
             systemBarStyle
-        )
+        )*/
         setContent {
             CounterTheme(
-                darkTheme
+                darkTheme()
             ) {
+                WindowCompat.enableEdgeToEdge(
+                    window
+                )
+                WindowCompat.getInsetsController(
+                    window,
+                    window.decorView
+                ).run {
+                    isAppearanceLightStatusBars = !darkTheme()
+                    isAppearanceLightNavigationBars = !darkTheme()
+                }
                 Surface(
                     Modifier.fillMaxSize()
                 ) {
@@ -479,5 +488,14 @@ class MainActivity : ComponentActivity() {
             }
         }
         recreate()
+    }
+
+    @Composable
+    private fun darkTheme(): Boolean {
+        return when (theme()) {
+            0 -> false
+            1 -> true
+            else -> isSystemInDarkTheme()
+        }
     }
 }

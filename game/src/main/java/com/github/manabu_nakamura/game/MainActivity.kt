@@ -1,10 +1,9 @@
 package com.github.manabu_nakamura.game
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import com.github.manabu_nakamura.game.ui.theme.GameTheme
 
 class MainActivity : ComponentActivity() {
@@ -48,12 +48,22 @@ class MainActivity : ComponentActivity() {
         super.onCreate(
             savedInstanceState
         )
-        enableEdgeToEdge()
+/*        enableEdgeToEdge()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             window.isNavigationBarContrastEnforced = false
-        }
+        }*/
         setContent {
             GameTheme {
+                WindowCompat.enableEdgeToEdge(
+                    window
+                )
+                WindowCompat.getInsetsController(
+                    window,
+                    window.decorView
+                ).run {
+                    isAppearanceLightStatusBars = !isSystemInDarkTheme()
+                    isAppearanceLightNavigationBars = !isSystemInDarkTheme()
+                }
                 var message by rememberSaveable {
                     mutableStateOf(
                         getString(
