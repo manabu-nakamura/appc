@@ -1,5 +1,5 @@
 [versions]
-agp = "9.3.2"
+agp = "9.4.0"
 kotlin = "2.4.10"
 coreKtx = "1.19.0"
 #junit = "4.13.2"
@@ -10,7 +10,7 @@ activityCompose = "1.13.0"
 #composeBom = "2026.08.00"
 material3 = "1.5.0-alpha27"
 datastorePreferences = "1.2.1"
-coil = "3.6.0"
+coil = "3.6.1"
 glide = "1.0.0-beta10"
 
 [libraries]

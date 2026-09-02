@@ -9,35 +9,88 @@
 🟥https://github.com/manabu-nakamura/appc/blob/main/counter/src/main/java/com/github/manabu_nakamura/counter/MainActivity.kt:
 - edge-to-edge
 ```kotlin
-val darkTheme = when (theme()) {
-    0 -> false
-    1 -> true
-    else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
-}
-val systemBarStyle = if (darkTheme) {
-    SystemBarStyle.dark(
-        Color.TRANSPARENT
+override fun onCreate(
+    savedInstanceState: Bundle?
+) {
+    super.onCreate(
+        savedInstanceState
     )
-} else {
-    SystemBarStyle.light(
-        Color.TRANSPARENT,
-        Color.TRANSPARENT
-    )
-}
-enableEdgeToEdge(
-    systemBarStyle,
-    systemBarStyle
-)
-setContent {
-    CounterTheme(
-        darkTheme
-    ) {
-        ...
+    val darkTheme = when (theme()) {
+        0 -> false
+        1 -> true
+        else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
     }
+    val systemBarStyle = if (darkTheme) {
+        SystemBarStyle.dark(
+            Color.TRANSPARENT
+        )
+    } else {
+        SystemBarStyle.light(
+            Color.TRANSPARENT,
+            Color.TRANSPARENT
+        )
+    }
+    enableEdgeToEdge(
+        systemBarStyle,
+        systemBarStyle
+    )
+    setContent {
+        CounterTheme(
+            darkTheme
+        ) {
+            ...
+        }
+    }
+}
+
+private fun theme(): Int {
+    return ...
 }
 ```
 <img src="s2.png" width="150">-><img src="s1.png" width="150">\
 (0) -> (1) `enableEdgeToEdge()`\
+https://issuetracker.google.com/issues/326356902
+```kotlin
+override fun onCreate(
+    savedInstanceState: Bundle?
+) {
+    super.onCreate(
+        savedInstanceState
+    )
+    setContent {
+        CounterTheme(
+            darkTheme()
+        ) {
+            WindowCompat.enableEdgeToEdge(
+                window
+            )
+            WindowCompat.getInsetsController(
+                window,
+                window.decorView
+            ).run {
+                isAppearanceLightStatusBars = !darkTheme()
+                isAppearanceLightNavigationBars = !darkTheme()
+            }
+            ...
+        }
+    }
+}
+
+@Composable
+private fun darkTheme(): Boolean {
+    return when (theme()) {
+        0 -> false
+        1 -> true
+        else -> isSystemInDarkTheme()
+    }
+}
+
+private fun theme(): Int {
+    return ...
+}
+```
+<img src="s2.png" width="150">-><img src="s1.png" width="150">\
+(0) -> (1) `enableEdgeToEdge()`, `isAppearanceLightStatusBars`, `isAppearanceLightNavigationBars`\
 https://issuetracker.google.com/issues/326356902
 
 🟥https://github.com/manabu-nakamura/appc/blob/main/counter/src/main/res/values/themes.xml:
@@ -63,18 +116,52 @@ https://github.com/material-components/material-components-android/issues/3635
 🟥https://github.com/manabu-nakamura/appc/blob/main/game/src/main/java/com/github/manabu_nakamura/game/MainActivity.kt:
 - edge-to-edge
 ```kotlin
-enableEdgeToEdge()
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-    window.isNavigationBarContrastEnforced = false
-}
-setContent {
-    GameTheme {
-        ...
+override fun onCreate(
+    savedInstanceState: Bundle?
+) {
+    super.onCreate(
+        savedInstanceState
+    )
+    enableEdgeToEdge()
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        window.isNavigationBarContrastEnforced = false
+    }
+    setContent {
+        GameTheme {
+            ...
+        }
     }
 }
 ```
 <img src="s8.png" width="150">-><img src="s7.png" width="150">\
 (0) -> (1) `enableEdgeToEdge()`\
+https://issuetracker.google.com/issues/326356902
+```kotlin
+override fun onCreate(
+    savedInstanceState: Bundle?
+) {
+    super.onCreate(
+        savedInstanceState
+    )
+    setContent {
+        GameTheme {
+            WindowCompat.enableEdgeToEdge(
+                window
+            )
+            WindowCompat.getInsetsController(
+                window,
+                window.decorView
+            ).run {
+                isAppearanceLightStatusBars = !isSystemInDarkTheme()
+                isAppearanceLightNavigationBars = !isSystemInDarkTheme()
+            }
+            ...
+        }
+    }
+}
+```
+<img src="s8.png" width="150">-><img src="s7.png" width="150">\
+(0) -> (1) `enableEdgeToEdge()`, `isAppearanceLightStatusBars`, `isAppearanceLightNavigationBars`\
 https://issuetracker.google.com/issues/326356902
 
 [Manabu Nakamura](https://github.com/manabu-nakamura)

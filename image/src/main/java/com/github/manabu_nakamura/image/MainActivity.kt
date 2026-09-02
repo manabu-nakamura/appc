@@ -1,19 +1,16 @@
 package com.github.manabu_nakamura.image
 
 import android.content.Context
-import android.content.res.Configuration
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,7 +23,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FlexibleBottomAppBar
@@ -34,9 +30,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SelectableDropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.ToggleButton
@@ -45,6 +43,7 @@ import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.rememberTooltipState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -65,6 +64,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(
             savedInstanceState
         )
-        val darkTheme = when (theme()) {
+/*        val darkTheme = when (theme()) {
             0 -> false
             1 -> true
             else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
@@ -104,11 +104,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge(
             systemBarStyle,
             systemBarStyle
-        )
+        )*/
         setContent {
             ImageTheme(
-                darkTheme
+                darkTheme()
             ) {
+                WindowCompat.enableEdgeToEdge(
+                    window
+                )
+                WindowCompat.getInsetsController(
+                    window,
+                    window.decorView
+                ).run {
+                    isAppearanceLightStatusBars = !darkTheme()
+                    isAppearanceLightNavigationBars = !darkTheme()
+                }
                 var uri by rememberSaveable {
                     mutableStateOf(
                         Uri.EMPTY
@@ -220,26 +230,29 @@ class MainActivity : ComponentActivity() {
                                     }
                                 ) {
                                     themes.forEachIndexed { index, theme ->
-                                        DropdownMenuItem(
-                                            {
-                                                Text(
-                                                    theme
-                                                )
-                                            },
+                                        SelectableDropdownMenuItem(
+                                            theme() == index,
                                             {
                                                 theme(
                                                     index
                                                 )
                                             },
+                                            {
+                                                Text(
+                                                    theme
+                                                )
+                                            },
+                                            shapes = MenuDefaults.itemShape(
+                                                index,
+                                                themes.size
+                                            ),
                                             leadingIcon = {
-                                                if (theme() == index) {
-                                                    Icon(
-                                                        painterResource(
-                                                            icons[index]
-                                                        ),
-                                                        theme
-                                                    )
-                                                }
+                                                Icon(
+                                                    painterResource(
+                                                        icons[index]
+                                                    ),
+                                                    theme
+                                                )
                                             }
                                         )
                                     }
@@ -490,5 +503,14 @@ class MainActivity : ComponentActivity() {
             }
         }
         recreate()
+    }
+
+    @Composable
+    private fun darkTheme(): Boolean {
+        return when (theme()) {
+            0 -> false
+            1 -> true
+            else -> isSystemInDarkTheme()
+        }
     }
 }
