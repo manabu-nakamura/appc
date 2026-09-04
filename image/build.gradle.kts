@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.coil)
 //    implementation(libs.glide)
+//    implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
 /*    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

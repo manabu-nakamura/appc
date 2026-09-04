@@ -8,6 +8,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+//import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -54,6 +55,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
+//import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
@@ -69,7 +71,10 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import coil3.compose.AsyncImage
+//import coil3.compose.rememberAsyncImagePainter
+//import coil3.request.ImageRequest
 //import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+//import com.bumptech.glide.integration.compose.GlideSubcomposition
 //import com.bumptech.glide.integration.compose.GlideImage
 import com.github.manabu_nakamura.image.ui.theme.ImageTheme
 import kotlinx.coroutines.flow.first
@@ -345,7 +350,6 @@ class MainActivity : ComponentActivity() {
                             offset += panChange
                         }
                         AsyncImage(
-//                        GlideImage(
                             uri,
                             null,
                             Modifier
@@ -359,6 +363,61 @@ class MainActivity : ComponentActivity() {
                                     state
                                 )
                         )
+/*                        val painter = rememberAsyncImagePainter(
+                            ImageRequest.Builder(
+                                LocalContext.current
+                            )
+                                .data(
+                                    uri
+                                )
+                                .build()
+                        )
+                        Image(
+                            painter,
+                            null,
+                            Modifier
+                                .graphicsLayer(
+                                    scale,
+                                    scale,
+                                    translationX = offset.x,
+                                    translationY = offset.y
+                                )
+                                .transformable(
+                                    state
+                                )
+                        )*/
+/*                        GlideImage(
+                            uri,
+                            null,
+                            Modifier
+                                .graphicsLayer(
+                                    scale,
+                                    scale,
+                                    translationX = offset.x,
+                                    translationY = offset.y
+                                )
+                                .transformable(
+                                    state
+                                )
+                        )*/
+/*                        GlideSubcomposition(
+                            uri,
+                        ) {
+                            Image(
+                                painter,
+                                null,
+                                Modifier
+                                    .graphicsLayer(
+                                        scale,
+                                        scale,
+                                        translationX = offset.x,
+                                        translationY = offset.y
+                                    )
+                                    .transformable(
+                                        state
+                                    )
+                            )
+                        }*/
                         if (bottomSheet) {
                             ModalBottomSheet(
                                 {
