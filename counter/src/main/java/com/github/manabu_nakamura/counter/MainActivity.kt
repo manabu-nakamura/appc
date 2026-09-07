@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,14 +20,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.PlainTooltip
+import androidx.compose.material3.SelectableDropdownMenuItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -395,6 +399,86 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         Row {
+                            Box {
+                                var expanded by rememberSaveable {
+                                    mutableStateOf(
+                                        false
+                                    )
+                                }
+                                TooltipBox(
+                                    TooltipDefaults.rememberTooltipPositionProvider(
+                                        TooltipAnchorPosition.Above
+                                    ),
+                                    {
+                                        PlainTooltip {
+                                            Text(
+                                                stringResource(
+                                                    R.string.theme
+                                                )
+                                            )
+                                        }
+                                    },
+                                    rememberTooltipState()
+                                ) {
+                                    IconButton(
+                                        {
+                                            expanded = !expanded
+                                        },
+                                        IconButtonDefaults.shapes()
+                                    ) {
+                                        Icon(
+                                            painterResource(
+                                                R.drawable.outline_palette_24
+                                            ),
+                                            stringResource(
+                                                R.string.theme
+                                            )
+                                        )
+                                    }
+                                }
+                                val themes = stringArrayResource(
+                                    R.array.theme
+                                )
+                                val icons = listOf(
+                                    R.drawable.outline_light_mode_24,
+                                    R.drawable.outline_dark_mode_24,
+                                    R.drawable.outline_android_24
+                                )
+                                DropdownMenu(
+                                    expanded,
+                                    {
+                                        expanded = false
+                                    }
+                                ) {
+                                    themes.forEachIndexed { index, theme ->
+                                        SelectableDropdownMenuItem(
+                                            theme() == index,
+                                            {
+                                                theme(
+                                                    index
+                                                )
+                                            },
+                                            {
+                                                Text(
+                                                    theme
+                                                )
+                                            },
+                                            shapes = MenuDefaults.itemShape(
+                                                index,
+                                                themes.size
+                                            ),
+                                            leadingIcon = {
+                                                Icon(
+                                                    painterResource(
+                                                        icons[index]
+                                                    ),
+                                                    theme
+                                                )
+                                            }
+                                        )
+                                    }
+                                }
+                            }
                             TooltipBox(
                                 TooltipDefaults.rememberTooltipPositionProvider(
                                     TooltipAnchorPosition.Above
