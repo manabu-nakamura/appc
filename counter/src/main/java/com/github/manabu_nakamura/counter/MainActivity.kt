@@ -8,6 +8,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +24,7 @@ import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilledTonalToggleButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -391,6 +393,38 @@ class MainActivity : ComponentActivity() {
 //                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
 //                                    }
                                     shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }
+                        FlowRow(
+//                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            themes.forEachIndexed { index, theme ->
+//                                ToggleButton(
+                                FilledTonalToggleButton(
+                                    selectedIndex == index,
+                                    {
+                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+//                                    Modifier.weight(
+//                                        1f
+//                                    ),
+                                    shapes = when (index) {
+                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                    }
+//                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
                                 ) {
                                     Text(
                                         theme
