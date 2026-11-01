@@ -213,14 +213,17 @@ class MainActivity : ComponentActivity() {
                                     ToggleButton(
                                         false,
                                         {
+                                            theme(
+                                                2
+                                            )
                                         },
                                         icon = {
                                             Icon(
                                                 painterResource(
-                                                    R.drawable.outline_android_24
+                                                    R.drawable.outline_restart_alt_24
                                                 ),
                                                 stringResource(
-                                                    R.string.test
+                                                    R.string.reset
                                                 )
                                             )
                                         },
@@ -228,7 +231,7 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         Text(
                                             stringResource(
-                                                R.string.test
+                                                R.string.reset
                                             ),
                                             Modifier.fillMaxWidth()
                                         )
@@ -303,7 +306,7 @@ class MainActivity : ComponentActivity() {
                         val themes = stringArrayResource(
                             R.array.theme
                         )
-                        var selectedIndex = theme()
+                        val selectedIndex = theme()
                         ButtonGroup(
                             {
                                 ButtonGroupDefaults.OverflowIndicator(
@@ -316,7 +319,7 @@ class MainActivity : ComponentActivity() {
                                     selectedIndex == index,
                                     theme,
                                     {
-                                        selectedIndex = index
+//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -334,7 +337,7 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-                                        selectedIndex = index
+//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -365,7 +368,7 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-                                        selectedIndex = index
+//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -396,7 +399,7 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-                                        selectedIndex = index
+//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -428,7 +431,7 @@ class MainActivity : ComponentActivity() {
                                 FilledTonalToggleButton(
                                     selectedIndex == index,
                                     {
-                                        selectedIndex = index
+//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
