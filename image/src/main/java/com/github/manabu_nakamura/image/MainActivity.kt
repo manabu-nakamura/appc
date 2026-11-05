@@ -137,6 +137,14 @@ class MainActivity : ComponentActivity() {
                         false
                     )
                 }
+                val themes = stringArrayResource(
+                    R.array.theme
+                )
+                val icons = listOf(
+                    R.drawable.outline_light_mode_24,
+                    R.drawable.outline_dark_mode_24,
+                    R.drawable.outline_android_24
+                )
                 Scaffold(
                     Modifier.fillMaxSize(),
                     bottomBar = {
@@ -213,14 +221,14 @@ class MainActivity : ComponentActivity() {
                                         )
                                     }
                                 }
-                                val themes = stringArrayResource(
-                                    R.array.theme
-                                )
-                                val icons = listOf(
-                                    R.drawable.outline_light_mode_24,
-                                    R.drawable.outline_dark_mode_24,
-                                    R.drawable.outline_android_24
-                                )
+//                                val themes = stringArrayResource(
+//                                    R.array.theme
+//                                )
+//                                val icons = listOf(
+//                                    R.drawable.outline_light_mode_24,
+//                                    R.drawable.outline_dark_mode_24,
+//                                    R.drawable.outline_android_24
+//                                )
                                 DropdownMenu(
                                     expanded,
                                     {
@@ -422,14 +430,14 @@ class MainActivity : ComponentActivity() {
                                         horizontal = 10.dp
                                     )
                                 ) {
-                                    val themes = stringArrayResource(
-                                        R.array.theme
-                                    )
-                                    val icons = listOf(
-                                        R.drawable.outline_light_mode_24,
-                                        R.drawable.outline_dark_mode_24,
-                                        R.drawable.outline_android_24
-                                    )
+//                                    val themes = stringArrayResource(
+//                                        R.array.theme
+//                                    )
+//                                    val icons = listOf(
+//                                        R.drawable.outline_light_mode_24,
+//                                        R.drawable.outline_dark_mode_24,
+//                                        R.drawable.outline_android_24
+//                                    )
                                     themes.forEachIndexed { index, theme ->
                                         ToggleButton(
                                             theme() == index,

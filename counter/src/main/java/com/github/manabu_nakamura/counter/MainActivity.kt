@@ -166,6 +166,14 @@ class MainActivity : ComponentActivity() {
                                 false
                             )
                         }
+                        val themes = stringArrayResource(
+                            R.array.theme
+                        )
+                        val icons = listOf(
+                            R.drawable.outline_light_mode_24,
+                            R.drawable.outline_dark_mode_24,
+                            R.drawable.outline_android_24
+                        )
                         if (bottomSheet) {
                             ModalBottomSheet(
                                 {
@@ -177,14 +185,14 @@ class MainActivity : ComponentActivity() {
                                         horizontal = 10.dp
                                     )
                                 ) {
-                                    val themes = stringArrayResource(
-                                        R.array.theme
-                                    )
-                                    val icons = listOf(
-                                        R.drawable.outline_light_mode_24,
-                                        R.drawable.outline_dark_mode_24,
-                                        R.drawable.outline_android_24
-                                    )
+//                                    val themes = stringArrayResource(
+//                                        R.array.theme
+//                                    )
+//                                    val icons = listOf(
+//                                        R.drawable.outline_light_mode_24,
+//                                        R.drawable.outline_dark_mode_24,
+//                                        R.drawable.outline_android_24
+//                                    )
                                     themes.forEachIndexed { index, theme ->
                                         ToggleButton(
                                             theme() == index,
@@ -303,9 +311,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
-                        val themes = stringArrayResource(
-                            R.array.theme
-                        )
+//                        val themes = stringArrayResource(
+//                            R.array.theme
+//                        )
                         val selectedIndex = theme()
                         ButtonGroup(
                             {
@@ -490,14 +498,14 @@ class MainActivity : ComponentActivity() {
                                         )
                                     }
                                 }
-                                val themes = stringArrayResource(
-                                    R.array.theme
-                                )
-                                val icons = listOf(
-                                    R.drawable.outline_light_mode_24,
-                                    R.drawable.outline_dark_mode_24,
-                                    R.drawable.outline_android_24
-                                )
+//                                val themes = stringArrayResource(
+//                                    R.array.theme
+//                                )
+//                                val icons = listOf(
+//                                    R.drawable.outline_light_mode_24,
+//                                    R.drawable.outline_dark_mode_24,
+//                                    R.drawable.outline_android_24
+//                                )
                                 DropdownMenu(
                                     expanded,
                                     {
