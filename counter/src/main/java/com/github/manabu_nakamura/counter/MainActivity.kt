@@ -174,6 +174,7 @@ class MainActivity : ComponentActivity() {
                             R.drawable.outline_dark_mode_24,
                             R.drawable.outline_android_24
                         )
+                        val selectedIndex = theme()
                         if (bottomSheet) {
                             ModalBottomSheet(
                                 {
@@ -195,7 +196,7 @@ class MainActivity : ComponentActivity() {
 //                                    )
                                     themes.forEachIndexed { index, theme ->
                                         ToggleButton(
-                                            theme() == index,
+                                            selectedIndex == index,
                                             {
                                                 theme(
                                                     index
@@ -314,7 +315,7 @@ class MainActivity : ComponentActivity() {
 //                        val themes = stringArrayResource(
 //                            R.array.theme
 //                        )
-                        val selectedIndex = theme()
+//                        val selectedIndex = theme()
                         ButtonGroup(
                             {
                                 ButtonGroupDefaults.OverflowIndicator(
@@ -514,7 +515,7 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     themes.forEachIndexed { index, theme ->
                                         SelectableDropdownMenuItem(
-                                            theme() == index,
+                                            selectedIndex == index,
                                             {
                                                 theme(
                                                     index
