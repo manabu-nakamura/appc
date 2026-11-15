@@ -22,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.ElevatedToggleButton
 import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalToggleButton
@@ -32,6 +33,7 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedToggleButton
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.SelectableDropdownMenuItem
 import androidx.compose.material3.Surface
@@ -78,25 +80,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(
             savedInstanceState
         )
-/*        val darkTheme = when (theme()) {
-            0 -> false
-            1 -> true
-            else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
-        }
-        val systemBarStyle = if (darkTheme) {
-            SystemBarStyle.dark(
-                Color.TRANSPARENT
-            )
-        } else {
-            SystemBarStyle.light(
-                Color.TRANSPARENT,
-                Color.TRANSPARENT
-            )
-        }
-        enableEdgeToEdge(
-            systemBarStyle,
-            systemBarStyle
-        )*/
+//        val darkTheme = when (theme()) {
+//            0 -> false
+//            1 -> true
+//            else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+//        }
+//        val systemBarStyle = if (darkTheme) {
+//            SystemBarStyle.dark(
+//                Color.TRANSPARENT
+//            )
+//        } else {
+//            SystemBarStyle.light(
+//                Color.TRANSPARENT,
+//                Color.TRANSPARENT
+//            )
+//        }
+//        enableEdgeToEdge(
+//            systemBarStyle,
+//            systemBarStyle
+//        )
         setContent {
             CounterTheme(
                 darkTheme()
@@ -169,11 +171,11 @@ class MainActivity : ComponentActivity() {
                         val themes = stringArrayResource(
                             R.array.theme
                         )
-                        val icons = listOf(
-                            R.drawable.outline_light_mode_24,
-                            R.drawable.outline_dark_mode_24,
-                            R.drawable.outline_android_24
-                        )
+//                        val icons = listOf(
+//                            R.drawable.outline_light_mode_24,
+//                            R.drawable.outline_dark_mode_24,
+//                            R.drawable.outline_android_24
+//                        )
                         val selectedIndex = theme()
                         if (bottomSheet) {
                             ModalBottomSheet(
@@ -202,14 +204,14 @@ class MainActivity : ComponentActivity() {
                                                     index
                                                 )
                                             },
-                                            icon = {
-                                                Icon(
-                                                    painterResource(
-                                                        icons[index]
-                                                    ),
-                                                    theme
-                                                )
-                                            },
+//                                            icon = {
+//                                                Icon(
+//                                                    painterResource(
+//                                                        icons[index]
+//                                                    ),
+//                                                    theme
+//                                                )
+//                                            },
                                             colors = ElevatedToggleButtonDefaults.colors()
                                         ) {
                                             Text(
@@ -436,8 +438,100 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             themes.forEachIndexed { index, theme ->
-//                                ToggleButton(
+                                ToggleButton(
+                                    selectedIndex == index,
+                                    {
+//                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+//                                    Modifier.weight(
+//                                        1f
+//                                    ),
+                                    shapes = when (index) {
+                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                    }
+//                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }
+                        FlowRow(
+//                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            themes.forEachIndexed { index, theme ->
+                                ElevatedToggleButton(
+                                    selectedIndex == index,
+                                    {
+//                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+//                                    Modifier.weight(
+//                                        1f
+//                                    ),
+                                    shapes = when (index) {
+                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                    }
+//                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }
+                        FlowRow(
+//                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            themes.forEachIndexed { index, theme ->
                                 FilledTonalToggleButton(
+                                    selectedIndex == index,
+                                    {
+//                                        selectedIndex = index
+                                        theme(
+                                            index
+                                        )
+                                    },
+//                                    Modifier.weight(
+//                                        1f
+//                                    ),
+                                    shapes = when (index) {
+                                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                                        themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                    }
+//                                    shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                ) {
+                                    Text(
+                                        theme
+                                    )
+                                }
+                            }
+                        }
+                        FlowRow(
+//                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            themes.forEachIndexed { index, theme ->
+                                OutlinedToggleButton(
                                     selectedIndex == index,
                                     {
 //                                        selectedIndex = index
@@ -526,18 +620,18 @@ class MainActivity : ComponentActivity() {
                                                     theme
                                                 )
                                             },
-                                            shapes = MenuDefaults.itemShape(
+                                            MenuDefaults.itemShape(
                                                 index,
                                                 themes.size
-                                            ),
-                                            leadingIcon = {
-                                                Icon(
-                                                    painterResource(
-                                                        icons[index]
-                                                    ),
-                                                    theme
-                                                )
-                                            }
+                                            )
+//                                            leadingIcon = {
+//                                                Icon(
+//                                                    painterResource(
+//                                                        icons[index]
+//                                                    ),
+//                                                    theme
+//                                                )
+//                                            }
                                         )
                                     }
                                 }
