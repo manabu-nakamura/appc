@@ -84,25 +84,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(
             savedInstanceState
         )
-/*        val darkTheme = when (theme()) {
-            0 -> false
-            1 -> true
-            else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
-        }
-        val systemBarStyle = if (darkTheme) {
-            SystemBarStyle.dark(
-                Color.TRANSPARENT
-            )
-        } else {
-            SystemBarStyle.light(
-                Color.TRANSPARENT,
-                Color.TRANSPARENT
-            )
-        }
-        enableEdgeToEdge(
-            systemBarStyle,
-            systemBarStyle
-        )*/
+//        val darkTheme = when (theme()) {
+//            0 -> false
+//            1 -> true
+//            else -> resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+//        }
+//        val systemBarStyle = if (darkTheme) {
+//            SystemBarStyle.dark(
+//                Color.TRANSPARENT
+//            )
+//        } else {
+//            SystemBarStyle.light(
+//                Color.TRANSPARENT,
+//                Color.TRANSPARENT
+//            )
+//        }
+//        enableEdgeToEdge(
+//            systemBarStyle,
+//            systemBarStyle
+//        )
         setContent {
             ImageTheme(
                 darkTheme()
@@ -140,11 +140,11 @@ class MainActivity : ComponentActivity() {
                 val themes = stringArrayResource(
                     R.array.theme
                 )
-                val icons = listOf(
-                    R.drawable.outline_light_mode_24,
-                    R.drawable.outline_dark_mode_24,
-                    R.drawable.outline_android_24
-                )
+//                val icons = listOf(
+//                    R.drawable.outline_light_mode_24,
+//                    R.drawable.outline_dark_mode_24,
+//                    R.drawable.outline_android_24
+//                )
                 Scaffold(
                     Modifier.fillMaxSize(),
                     bottomBar = {
@@ -248,18 +248,18 @@ class MainActivity : ComponentActivity() {
                                                     theme
                                                 )
                                             },
-                                            shapes = MenuDefaults.itemShape(
+                                            MenuDefaults.itemShape(
                                                 index,
                                                 themes.size
-                                            ),
-                                            leadingIcon = {
-                                                Icon(
-                                                    painterResource(
-                                                        icons[index]
-                                                    ),
-                                                    theme
-                                                )
-                                            }
+                                            )
+//                                            leadingIcon = {
+//                                                Icon(
+//                                                    painterResource(
+//                                                        icons[index]
+//                                                    ),
+//                                                    theme
+//                                                )
+//                                            }
                                         )
                                     }
                                 }
@@ -446,14 +446,14 @@ class MainActivity : ComponentActivity() {
                                                     index
                                                 )
                                             },
-                                            icon = {
-                                                Icon(
-                                                    painterResource(
-                                                        icons[index]
-                                                    ),
-                                                    theme
-                                                )
-                                            },
+//                                            icon = {
+//                                                Icon(
+//                                                    painterResource(
+//                                                        icons[index]
+//                                                    ),
+//                                                    theme
+//                                                )
+//                                            },
                                             colors = ElevatedToggleButtonDefaults.colors()
                                         ) {
                                             Text(
