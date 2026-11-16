@@ -204,14 +204,8 @@ class MainActivity : ComponentActivity() {
                                                     index
                                                 )
                                             },
-//                                            icon = {
-//                                                Icon(
-//                                                    painterResource(
-//                                                        icons[index]
-//                                                    ),
-//                                                    theme
-//                                                )
-//                                            },
+                                            icon = {
+                                            },
                                             colors = ElevatedToggleButtonDefaults.colors()
                                         ) {
                                             Text(
