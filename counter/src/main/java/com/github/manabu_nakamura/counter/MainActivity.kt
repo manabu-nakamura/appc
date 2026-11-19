@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,6 +23,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedToggleButton
 import androidx.compose.material3.ElevatedToggleButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -48,6 +50,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -60,6 +63,7 @@ import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
@@ -327,6 +331,65 @@ class MainActivity : ComponentActivity() {
 //                                        selectedIndex = index
                                         theme(
                                             index
+                                        )
+                                    }
+                                )
+                            }
+                        }
+                        ButtonGroup(
+                            {
+                                ButtonGroupDefaults.OverflowIndicator(
+                                    it
+                                )
+                            }
+                        ) {
+                            themes.forEachIndexed { index, theme ->
+                                customItem(
+                                    {
+                                        val interactionSource = remember {
+                                            MutableInteractionSource()
+                                        }
+                                        FilledTonalToggleButton(
+                                            selectedIndex == index,
+                                            {
+                                                theme(
+                                                    index
+                                                )
+                                            },
+                                            Modifier.animateWidth(
+                                                interactionSource
+                                            ),
+                                            interactionSource = interactionSource
+                                        ) {
+                                            Text(
+                                                theme,
+                                                overflow = TextOverflow.Visible,
+                                                softWrap = false
+                                            )
+                                        }
+                                    },
+                                    {
+                                        DropdownMenuItem(
+                                            {
+                                                Text(
+                                                    theme
+                                                )
+                                            },
+                                            {
+                                                theme(
+                                                    index
+                                                )
+                                            },
+                                            trailingIcon = {
+                                                if (selectedIndex == index) {
+                                                    Icon(
+                                                        painterResource(
+                                                            R.drawable.outline_check_24
+                                                        ),
+                                                        null
+                                                    )
+                                                }
+                                            }
                                         )
                                     }
                                 )
