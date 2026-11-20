@@ -22,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
 import androidx.compose.material3.ButtonGroupDefaults
+import androidx.compose.material3.ComposeMaterial3Flags
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedToggleButton
@@ -45,7 +46,6 @@ import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -104,6 +104,7 @@ class MainActivity : ComponentActivity() {
 //            systemBarStyle,
 //            systemBarStyle
 //        )
+        ComposeMaterial3Flags.isBottomSheetPartiallyExpandedDeterministicEnabled = false
         setContent {
             CounterTheme(
                 darkTheme()
@@ -186,8 +187,7 @@ class MainActivity : ComponentActivity() {
                             ModalBottomSheet(
                                 {
                                     bottomSheet = false
-                                },
-                                sheetState = rememberModalBottomSheetState()
+                                }
                             ) {
                                 Column(
                                     Modifier.padding(
