@@ -8,6 +8,7 @@ android {
     compileSdk {
         version = release(37)
     }
+    compileSdkMinor = 2
     defaultConfig {
         applicationId = "com.github.manabu_nakamura.image"
         minSdk = 24

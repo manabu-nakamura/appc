@@ -3,16 +3,13 @@
     <string name="count">+1</string>
     <string name="reset">Reset</string>
     <string name="theme">Theme</string>
-    <!--string name="light">Light</string>
-    <string name="dark">Dark</string>
-    <string name="system">Default</string-->
     <string-array name="theme">
         <item>Light</item>
         <item>Dark</item>
         <item>Default</item>
-        <!--item>Other 1</item>
-        <item>Other 2</item>
-        <item>Other 3</item-->
+        <item>Default 2</item>
+        <item>Default 3</item>
+        <item>Default 4</item>
     </string-array>
     <string name="about">About</string>
     <!--<string name="copyright">© 2026 Manabu Nakamura</string>-->
