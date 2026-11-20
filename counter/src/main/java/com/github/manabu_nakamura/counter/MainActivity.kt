@@ -45,6 +45,7 @@ import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -185,7 +186,8 @@ class MainActivity : ComponentActivity() {
                             ModalBottomSheet(
                                 {
                                     bottomSheet = false
-                                }
+                                },
+                                sheetState = rememberModalBottomSheetState()
                             ) {
                                 Column(
                                     Modifier.padding(
