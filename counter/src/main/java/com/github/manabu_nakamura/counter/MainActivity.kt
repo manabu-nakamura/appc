@@ -361,6 +361,7 @@ class MainActivity : ComponentActivity() {
                                             Modifier.animateWidth(
                                                 interactionSource
                                             ),
+                                            contentPadding = ButtonDefaults.ContentPadding,
                                             interactionSource = interactionSource
                                         ) {
                                             Text(
