@@ -194,14 +194,6 @@ class MainActivity : ComponentActivity() {
                                         horizontal = 10.dp
                                     )
                                 ) {
-//                                    val themes = stringArrayResource(
-//                                        R.array.theme
-//                                    )
-//                                    val icons = listOf(
-//                                        R.drawable.outline_light_mode_24,
-//                                        R.drawable.outline_dark_mode_24,
-//                                        R.drawable.outline_android_24
-//                                    )
                                     themes.forEachIndexed { index, theme ->
                                         ToggleButton(
                                             selectedIndex == index,
@@ -314,10 +306,6 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
-//                        val themes = stringArrayResource(
-//                            R.array.theme
-//                        )
-//                        val selectedIndex = theme()
                         ButtonGroup(
                             {
                                 ButtonGroupDefaults.OverflowIndicator(
@@ -330,7 +318,6 @@ class MainActivity : ComponentActivity() {
                                     selectedIndex == index,
                                     theme,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -348,27 +335,41 @@ class MainActivity : ComponentActivity() {
                             themes.forEachIndexed { index, theme ->
                                 customItem(
                                     {
-                                        val interactionSource = remember {
-                                            MutableInteractionSource()
-                                        }
-                                        FilledTonalToggleButton(
-                                            selectedIndex == index,
-                                            {
-                                                theme(
-                                                    index
-                                                )
-                                            },
-                                            Modifier.animateWidth(
-                                                interactionSource
+                                        TooltipBox(
+                                            TooltipDefaults.rememberTooltipPositionProvider(
+                                                TooltipAnchorPosition.Above
                                             ),
-                                            contentPadding = ButtonDefaults.ContentPadding,
-                                            interactionSource = interactionSource
+                                            {
+                                                PlainTooltip {
+                                                    Text(
+                                                        theme
+                                                    )
+                                                }
+                                            },
+                                            rememberTooltipState()
                                         ) {
-                                            Text(
-                                                theme,
-                                                overflow = TextOverflow.Visible,
-                                                softWrap = false
-                                            )
+                                            val interactionSource = remember {
+                                                MutableInteractionSource()
+                                            }
+                                            FilledTonalToggleButton(
+                                                selectedIndex == index,
+                                                {
+                                                    theme(
+                                                        index
+                                                    )
+                                                },
+                                                Modifier.animateWidth(
+                                                    interactionSource
+                                                ),
+                                                contentPadding = ButtonDefaults.ContentPadding,
+                                                interactionSource = interactionSource
+                                            ) {
+                                                Text(
+                                                    theme,
+                                                    overflow = TextOverflow.Visible,
+                                                    softWrap = false
+                                                )
+                                            }
                                         }
                                     },
                                     {
@@ -408,7 +409,6 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -439,7 +439,6 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -470,7 +469,6 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -501,7 +499,6 @@ class MainActivity : ComponentActivity() {
                                 ToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -532,7 +529,6 @@ class MainActivity : ComponentActivity() {
                                 ElevatedToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -563,7 +559,6 @@ class MainActivity : ComponentActivity() {
                                 FilledTonalToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -594,7 +589,6 @@ class MainActivity : ComponentActivity() {
                                 OutlinedToggleButton(
                                     selectedIndex == index,
                                     {
-//                                        selectedIndex = index
                                         theme(
                                             index
                                         )
@@ -653,14 +647,6 @@ class MainActivity : ComponentActivity() {
                                         )
                                     }
                                 }
-//                                val themes = stringArrayResource(
-//                                    R.array.theme
-//                                )
-//                                val icons = listOf(
-//                                    R.drawable.outline_light_mode_24,
-//                                    R.drawable.outline_dark_mode_24,
-//                                    R.drawable.outline_android_24
-//                                )
                                 DropdownMenu(
                                     expanded,
                                     {
