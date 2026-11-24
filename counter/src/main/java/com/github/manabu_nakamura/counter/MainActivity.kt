@@ -335,19 +335,19 @@ class MainActivity : ComponentActivity() {
                             themes.forEachIndexed { index, theme ->
                                 customItem(
                                     {
-                                        TooltipBox(
-                                            TooltipDefaults.rememberTooltipPositionProvider(
-                                                TooltipAnchorPosition.Above
-                                            ),
-                                            {
-                                                PlainTooltip {
-                                                    Text(
-                                                        theme
-                                                    )
-                                                }
-                                            },
-                                            rememberTooltipState()
-                                        ) {
+//                                        TooltipBox(
+//                                            TooltipDefaults.rememberTooltipPositionProvider(
+//                                                TooltipAnchorPosition.Above
+//                                            ),
+//                                            {
+//                                                PlainTooltip {
+//                                                    Text(
+//                                                        theme
+//                                                    )
+//                                                }
+//                                            },
+//                                            rememberTooltipState()
+//                                        ) {
                                             val interactionSource = remember {
                                                 MutableInteractionSource()
                                             }
@@ -370,7 +370,7 @@ class MainActivity : ComponentActivity() {
                                                     softWrap = false
                                                 )
                                             }
-                                        }
+//                                        }
                                     },
                                     {
                                         DropdownMenuItem(
