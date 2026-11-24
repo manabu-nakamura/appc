@@ -351,7 +351,7 @@ class MainActivity : ComponentActivity() {
                             scale = (scale * zoomChange).coerceIn(
                                 .5f..5f
                             )
-                            offset += panChange
+                            offset += panChange * scale
                         }
                         AsyncImage(
                             uri,

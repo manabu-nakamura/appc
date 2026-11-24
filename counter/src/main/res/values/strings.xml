@@ -10,6 +10,8 @@
         <item>Default 2</item>
         <item>Default 3</item>
         <item>Default 4</item>
+        <item>Default 5</item>
+        <item>Default 6</item>
     </string-array>
     <string name="about">About</string>
     <!--<string name="copyright">© 2026 Manabu Nakamura</string>-->
