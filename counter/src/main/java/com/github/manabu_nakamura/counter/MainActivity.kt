@@ -335,42 +335,46 @@ class MainActivity : ComponentActivity() {
                             themes.forEachIndexed { index, theme ->
                                 customItem(
                                     {
-//                                        TooltipBox(
-//                                            TooltipDefaults.rememberTooltipPositionProvider(
-//                                                TooltipAnchorPosition.Above
-//                                            ),
-//                                            {
-//                                                PlainTooltip {
-//                                                    Text(
-//                                                        theme
-//                                                    )
-//                                                }
-//                                            },
-//                                            rememberTooltipState()
-//                                        ) {
-                                            val interactionSource = remember {
-                                                MutableInteractionSource()
-                                            }
-                                            FilledTonalToggleButton(
-                                                selectedIndex == index,
-                                                {
-                                                    theme(
-                                                        index
-                                                    )
-                                                },
-                                                Modifier.animateWidth(
-                                                    interactionSource
+                                        val interactionSource = remember {
+                                            MutableInteractionSource()
+                                        }
+                                        Box(
+                                            Modifier.animateWidth(
+                                                interactionSource
+                                            )
+                                        ) {
+                                            TooltipBox(
+                                                TooltipDefaults.rememberTooltipPositionProvider(
+                                                    TooltipAnchorPosition.Above
                                                 ),
-                                                contentPadding = ButtonDefaults.ContentPadding,
-                                                interactionSource = interactionSource
+                                                {
+                                                    PlainTooltip {
+                                                        Text(
+                                                            theme
+                                                        )
+                                                    }
+                                                },
+                                                rememberTooltipState()
                                             ) {
-                                                Text(
-                                                    theme,
-                                                    overflow = TextOverflow.Visible,
-                                                    softWrap = false
-                                                )
+                                                FilledTonalToggleButton(
+                                                    selectedIndex == index,
+                                                    {
+                                                        theme(
+                                                            index
+                                                        )
+                                                    },
+                                                    Modifier.fillMaxWidth(),
+                                                    contentPadding = ButtonDefaults.ContentPadding,
+                                                    interactionSource = interactionSource
+                                                ) {
+                                                    Text(
+                                                        theme,
+                                                        overflow = TextOverflow.Visible,
+                                                        softWrap = false
+                                                    )
+                                                }
                                             }
-//                                        }
+                                        }
                                     },
                                     {
                                         DropdownMenuItem(
@@ -486,6 +490,54 @@ class MainActivity : ComponentActivity() {
                                     Text(
                                         theme
                                     )
+                                }
+                            }
+                        }
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            Arrangement.spacedBy(
+                                ButtonGroupDefaults.ConnectedSpaceBetween
+                            )
+                        ) {
+                            themes.forEachIndexed { index, theme ->
+                                Box(
+                                    Modifier.weight(
+                                        1f
+                                    )
+                                ) {
+                                    TooltipBox(
+                                        TooltipDefaults.rememberTooltipPositionProvider(
+                                            TooltipAnchorPosition.Above
+                                        ),
+                                        {
+                                            PlainTooltip {
+                                                Text(
+                                                    theme
+                                                )
+                                            }
+                                        },
+                                        rememberTooltipState()
+                                    ) {
+                                        FilledTonalToggleButton(
+                                            selectedIndex == index,
+                                            {
+                                                theme(
+                                                    index
+                                                )
+                                            },
+                                            Modifier.fillMaxWidth(),
+                                            shapes = when (index) {
+                                                0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                                                themes.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                                                else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                            }
+//                                            shapes = ButtonGroupDefaults.connectedMiddleButtonShapes()
+                                        ) {
+                                            Text(
+                                                theme
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
